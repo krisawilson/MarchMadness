@@ -1,10 +1,10 @@
 # read in 2013-2023. this is 2012-2013 to 2022-2023 season ----
 suppressMessages(library(tidyverse))
-cbb <- read_csv("cbb.csv", na = c("", "NA", "N/A"))
+cbb <- read_csv("data/cbb.csv", na = c("", "NA", "N/A"))
 cbb <- na.omit(cbb)
 
 # results data. from 2002-2003 to 2011-2022 ----
-big_dance <- read_csv("Big_Dance_CSV.csv")
+big_dance <- read_csv("data/Big_Dance_CSV.csv")
 # get years we want
 dance <- big_dance |> filter(Year >= 2008 & Year <= 2012) |> 
   select(-"Region Number") |> # rename
