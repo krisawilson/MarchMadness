@@ -1,11 +1,14 @@
-# packages and preprep----
+# packages ----
 #setwd(C:\MarchMadness)
 suppressPackageStartupMessages(library(tidyverse))
-library(caret) # for parition and training setups
-library(glmnet) # for regularized regression
-library(xgboost) # xgboost
+library(caret) # for parition, training, and cross validation
+library(glmnet) # for regularized classification model
+library(xgboost) # xgboost classification tree, masks dplyr::slice
 library(rpart) # for decision tree
+library(ranger) # random forest classification tree
+library(VGAM) # ordinal regression, masks caret::predictors
 
+# setup ----
 # read in data
 df <- read_csv("data/clean-data.csv")
 df <- df |> # add ordinal representation
@@ -26,22 +29,59 @@ ind <- createDataPartition(df$postseason, p = 0.75, list = F) # split data
 train_df <- df[ind,]
 test_df <- df[-ind,]
 
-# model 1a: ordered logistic regression ----
-ordr1 <- train(
-  postseason ~ adj_oe + adj_de + barthag + efg_o + efg_d + tor + tor_d +
-    orb + drb + ftr + ftr_d + x2p_o + x2p_d + x3p_o + x3p_d + adj_t + wab, 
-  data = train_df, method = "polr",
-  trControl = ctrl
-  )
-summary(ordr1)
-# remove insignif vars
-ordr2 <- train(postseason ~ adj_oe + adj_de + barthag + x2p_d + wab, 
+# see which candidates are the best for the model. 
+### note regsubsets() is a linear regression context
+summary(leaps::regsubsets(postseason ~ ., data = train_df[,3:20]))
+# check overall variable importance
+filterVarImp(train_df[,3:19], train_df$postseason)
+
+# model 1a: full ordered logistic regression ----
+## while not the best model by AIC, a slight increase in AIC 
+## is worth leaving some terms out the model
+ord <- train(postseason ~ adj_oe + adj_de + barthag + x2p_d, 
                data = train_df, method = "polr", trControl = ctrl)
-summary(ordr2)
+summary(ord)
+ord_mod <- MASS::polr(postseason ~ adj_oe + adj_de + barthag + x2p_d,
+                      data = train_df, method = "logistic",
+                      Hess = TRUE, na.action = na.omit)
 # check variable importance:
-varImp(ordr2, scale = FALSE) # from caret
-rm(ordr1, df, ind)
+varImp(ord, scale = FALSE) # from caret
+
+## keep ord, as it contains the accuracy ##
+
 # model 2a: regularized logistic regression ----
+lass <- train(postseason ~ . -team -conf -seed -year -finish, 
+              data = train_df, method = "glmnet",
+              family = "multinomial", trControl = ctrl)
+# alpha = 1 and alpha = 0.55 are almost indistinguishable. both have
+## lambda = 0, so alpha = 1 would be back to regular model. try 
+## elastic net w alpha = 0.55
+# convert to matrix
+X <- train_df |> 
+  select(-c(team, conf, seed, year, finish, postseason)) |> as.matrix()
+# do CV with elastic net
+lass <- cv.glmnet(x = X, y = train_df$postseason, type.measure = "class", family = "multinomial")
+# Fit the elastic net model 
+lass_mod <- glmnet(x = X, y = train_df$postseason, 
+                      family = "multinomial", alpha = 0.55)
+rm(X)
+## keep lass, as it contains the accuracy ##
+
+# model 3a: cumulative link and adjacent categories models ----
+## examine equal/unequal coefficients and link functions.
+## parallel = TRUE means eq. coefs. logit/probit are separated by 0.001
+suppressWarnings(train(postseason ~ . -team -conf -seed -year -finish, 
+      data = train_df, method = "vglmCumulative", trControl = ctrl))
+## warnings from from logit vs logitlink, but not something I can't fix
+
+# fitting the models with VGAM
+adj <- vglm(postseason ~ adj_oe + adj_de + barthag + x2p_d + wab,
+            data = train_df, family = "acat", link = "logitlink")
+# cumulative probit needs work... moving on to trees
+
+# model 4a: random forest ----
+
+# model 5a: graident boosted tree ----
 
 # set 2: addressing response imbalance ----
 ctrl2 <- trainControl(method = "cv", number = 5, sampling = "smote")
