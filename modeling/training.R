@@ -1,10 +1,10 @@
 # packages ----
-#setwd(C:\MarchMadness)
 suppressPackageStartupMessages(library(tidyverse))
 library(caret) # for parition, training, and cross validation
 library(glmnet) # for regularized classification model
 library(rpart) # for decision tree
 library(ranger) # random forest classification tree
+library(ordinal) # for linear classification models
 
 # setup ----
 # read in data
@@ -20,77 +20,54 @@ df <- df |> # add ordinal representation
   # order to create ordered factor for polr
     postseason = reorder(postseason, finish, order = TRUE))
 
-# set a: preserve class distribution (imbalance in data) ----
+# standardize data, as this improves stability of some models
+std_df <- df |> 
+  group_by(year) |> # want statistics relative to year
+  mutate(across(adj_oe:wab, ~as.vector(scale(.)))) |> ungroup()
+
+# split training and test data
 set.seed(425440)
 ctrl <- trainControl(method = "cv", number = 5) # set up CV
 ind <- createDataPartition(df$postseason, p = 0.75, list = F) # split data
-train_df <- df[ind,]
-test_df <- df[-ind,]
+train_df <- std_df[ind,]
+test_df <- std_df[-ind,]
 
 # check overall variable importance
-filterVarImp(train_df[,3:19], train_df$postseason)
+#filterVarImp(train_df[,3:17], train_df$postseason)
 
-# standardize data, as this improves stability of some models
-std_train <- train_df |> 
-  select(3:19) |> scale() |> data.frame() |> # standardization
-  cbind(train_df$postseason) |> # add response
-  rename(postseason = "train_df$postseason") # clean its name
-rm(ind, df)
-
-# model 1a: full ordered logistic regression ----
-## while not the best model by AIC, a slight increase in AIC 
-## is worth leaving some terms out the model
-ord <- train(postseason ~ adj_oe + adj_de + barthag + x2p_d, 
-               data = std_train, method = "polr", trControl = ctrl)
-summary(ord)
-# ordered regression via polr
-ord_mod <- MASS::polr(postseason ~ adj_oe + adj_de + barthag + x2p_d,
-                      data = std_train, method = "logistic",
-                      Hess = TRUE, na.action = na.omit)
-# check variable importance:
-varImp(ord, scale = FALSE) # from caret
-rm(ord)
-# model 2a: regularized logistic regression ----
-lass <- train(postseason ~ . , data = std_train, 
-              method = "glmnet", family = "multinomial", trControl = ctrl)
-# alpha = 0.55, lambda = 0 is the elasticnet we're going to try
-
-# Fit the elastic net model 
-lass_mod <- glmnet(x = as.matrix(std_train[, -ncol(std_train)]), 
-                   y = train_df$postseason, 
-                   family = "multinomial", alpha = 0.55)
-rm(lass)
-
-# model 3a: cumulative link model ----
+# model 1: ordinal regression w logit and probit links  ----
 
 # while not shown here, smaller model fit better, so going with it
-cumul_l <- ordinal::clm(postseason ~ adj_oe + adj_de + barthag + x2p_d,
-                      data = std_train, link = "logit")
-cumul_p <- ordinal::clm(postseason ~ adj_oe + adj_de + barthag + x2p_d,
-                        data = std_train, link = "probit")
-# note that logit link is slightly better than probit 
+logit <- clm(postseason ~ adj_oe + adj_de + barthag + x2p_d,
+               data = train_df, link = "logit")
+probit <- clm(postseason ~ adj_oe + adj_de + barthag + x2p_d,
+              data = train_df, link = "probit")
 
-# model 4a: random forest ----
+# model 2: random forest ----
 
 ## don't need to standardize :D ##
+tree_df <- df[ind,]
+tree_test <- df[-ind,]
+rm(ind)
 # initialize tuning params
 rf_tune_grid <- expand.grid(mtry = seq(from = 2, to = 16, by = 2),
                             splitrule = "gini",
-                            min.node.size = 1) # from 10 for probability
+                            min.node.size = 10) # the default for probability
+                                                # tried 1, was worse
 set.seed(425440)
 # train model
 rf <- train(postseason ~ .,
-            data = train_df[,3:20], method = "ranger", num.trees = 150,
+            data = tree_df[,3:20], method = "ranger", num.trees = 150,
             trControl = ctrl, tuneGrid = rf_tune_grid)
 # fit model
 rf_full <- ranger(postseason ~ ., 
-                  data = train_df[,3:20],
+                  data = tree_df[,3:20],
                   num.trees = 150, probability = T, mtry = rf$bestTune$mtry,
                   splitrule = "gini", importance = "impurity")
-vip::vip(rf_full, geom = "point") + theme_bw()
+#vip::vip(rf_full, geom = "point") + theme_bw()
 rm(rf, rf_tune_grid)
 
-# model 5a: gradient boosted tree ----
+# model 3: gradient boosted tree ----
 ## again, don't need to use standardized data ##
 # initialize tuning params
 xgb_tune_grid <- expand.grid(nrounds = seq(from = 20, to = 200, by = 20),
@@ -102,8 +79,8 @@ xgb_tune_grid <- expand.grid(nrounds = seq(from = 20, to = 200, by = 20),
                              subsample = 1)
 set.seed(425440)
 # train model
-xgb_tune <- train(x = as.matrix(train_df[,3:19]),
-                  y = train_df$postseason,
+xgb_tune <- train(x = as.matrix(tree_df[,3:19]),
+                  y = tree_df$postseason,
                   trControl = ctrl,
                   tuneGrid = xgb_tune_grid,
                   objective = "multi:softprob",
@@ -112,8 +89,8 @@ xgb_tune <- train(x = as.matrix(train_df[,3:19]),
 
 # actually fit the boosted tree
 xgb_mod <- xgboost::xgboost(
-  data = as.matrix(train_df[,3:19]),
-  label = train_df$finish,
+  data = as.matrix(tree_df[,3:19]),
+  label = tree_df$finish,
   objective = "multi:softprob",
   nrounds = xgb_tune$bestTune$nrounds,
 # doing it the hard way bc of the num_class silliness
@@ -128,13 +105,24 @@ xgb_mod <- xgboost::xgboost(
 
 rm(xgb_tune, xgb_tune_grid)
 
+# model 4: decision tree ----
+trained_tree <- train(postseason ~ .,
+                      data = tree_df[,3:20], method = "rpart",
+                      trControl = trainControl(method = "cv",
+                                               number = 10),
+                      tuneLength = 20)
+#rpart.plot::rpart.plot(trained_tree$finalModel)
+#vip::vip(trained_tree, geom = "point") + theme_bw()
+#ggplot(trained_tree) + theme_bw()
+# extract model
+final_tree <- trained_tree$finalModel
+rm(trained_tree)
 # testing time! ----
 rm(ctrl)
-# standardize response data
-std_test <- test_df |> 
-  select(3:19) |> scale() |> data.frame() |> # standardization
-  cbind(test_df$postseason) |> # add response
-  rename(postseason = "test_df$postseason") # clean its name
+# train_df is standardized training data
+# test_df is standardized testing data
+# tree_df is nonstandardized training data
+# tree_test is nonstandardized testing data
 
 # save models and data to test in another file
-save.image("C:/MarchMadness/models-env.RData")
+save.image("C:/MarchMadness/modeling/testing/test-env.RData")
