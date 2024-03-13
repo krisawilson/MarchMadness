@@ -1,6 +1,8 @@
+# packages----
 library(tidyverse)
 library(rvest)
 library(polite)
+# get data ----
 
 scrape_n_clean <- function(url, year) {
   # politely scrape
@@ -11,7 +13,7 @@ scrape_n_clean <- function(url, year) {
   tnames <- tab_yr[1,] # extract first row as names
   tab_yr <- tab_yr[-1,] # remove first row
   colnames(tab_yr) <- tnames  # attach names
-  
+## stuck here bc no seeds until selection sunday ####
   # begin cleaning process
   clean_yr <- tab_yr |> 
     filter(Rk != "Rk") |> # remove header rows from scraping
@@ -64,4 +66,8 @@ scrape_n_clean <- function(url, year) {
   return(clean_yr)
 }
 
-saveRDS(scrape_n_clean, "data-cleaning/data-cleaning-function.rds")
+url <- "https://barttorvik.com/trank.php?year=2024&sort=&top=0&conlimit=All&venue=All&type=All#"
+data24 <- cleaning(url = url, year = 2024)
+
+# fit model
+probit <- readRDS(file = "C:/MarchMadness/modeling/simulation/probit_model.rds")
