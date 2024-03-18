@@ -47,7 +47,7 @@ rm(tab_yr)
 # predictions ----
 
 # load in model
-probit <- readRDS(file = "C:/MarchMadness/modeling/simulation/probit_model.rds")
+probit <- readRDS(file = "C:/MarchMadness/modeling/probit_model.rds")
 
 # prep data: this includes standardization!
 men24 <- clean_yr |> select(-team, -conf, -seed) |> scale() |> data.frame()
