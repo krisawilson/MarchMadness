@@ -9,6 +9,9 @@
 # User-specific files
 .Ruserdata
 
+# Ignore sandbox file
+sandbox.R
+
 # Example code in package build process
 *-Ex.R
 
