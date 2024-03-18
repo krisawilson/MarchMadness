@@ -90,4 +90,4 @@ lapply(list(logit_probs, probit_probs, rf_probs, xgb_pred, dectree_probs), valid
 # champions correctly. 59% in R32/R16. Not as good with final four and runner up
 
 # save probit model
-#saveRDS(probit, file = "C:/MarchMadness/modeling/simulation/probit_model.rds")
+#saveRDS(probit, file = "C:/MarchMadness/modeling/probit_model.rds")
