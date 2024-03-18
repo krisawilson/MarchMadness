@@ -50,9 +50,9 @@ rm(tab_yr)
 probit <- readRDS(file = "C:/MarchMadness/modeling/probit_model.rds")
 
 # prep data: this includes standardization!
-men24 <- clean_yr |> select(-team, -conf, -seed) |> scale() |> data.frame()
+std24 <- clean_yr |> select(-team, -conf, -seed) |> scale() |> data.frame()
 # bind data
-wholedf <- cbind(select(clean_yr, team, conf, seed), men24)
+wholedf <- cbind(select(clean_yr, team, conf, seed), std24)
 # prediction!
 preds <- predict(probit, wholedf, type = "prob")
 preds <- as.data.frame(preds) # turn into data frame 
@@ -60,8 +60,8 @@ preds <- as.data.frame(preds) # turn into data frame
 colnames(preds) <- sub("^fit\\.", "", colnames(preds))
 # bind again
 wdf <- cbind(clean_yr, preds)
-wdf <- wdf |> select(-c(3:19)) # remove original data
-rm(preds, probit, wholedf, clean_yr, men24, url) # clean env
+wdf <- wdf |> relocate(seed, .before = adj_oe) # reorder columns
+rm(preds, probit, wholedf, clean_yr, std24, url) # clean env
 
 # begin tourney structure w region assignments ----
 east <- c("Connecticut", "Iowa St.", "Illinois", "Auburn", "San Diego St.", 
@@ -87,7 +87,7 @@ full_2024 <- wdf |>
     team %in% midwest ~ "midwest",
     team %in% south ~ "south",
     team %in% west ~ "west",
-    TRUE ~ NA))
+    TRUE ~ NA), .before = adj_oe)
 rm(wdf)
 # subset by region!
 east <- full_2024 |> filter(region == "east")
@@ -206,3 +206,45 @@ east21 <- sim_two(quad = east1, round = "R32")
 east22 <- sim_two(east2, "R32")
 east23 <- sim_two(east3, "R32")
 east24 <- sim_two(east4, "R32")
+
+# west ----
+
+# round of 64
+west1 <- sim_four(region = west, seeds = c(1, 16, 8, 9), round = "R64")
+west2 <- sim_four(west, seeds = c(4, 5, 12, 13), round = "R64")
+west3 <- sim_four(west, seeds = c(3, 14, 6, 11), round = "R64")
+west4 <- sim_four(west, seeds = c(2, 15, 7, 10), round = "R64")
+
+# round of 32
+west21 <- sim_two(quad = west1, round = "R32")
+west22 <- sim_two(west2, "R32")
+west23 <- sim_two(west3, "R32")
+west24 <- sim_two(west4, "R32")
+
+# midwest ----
+
+# round of 64
+midwest1 <- sim_four(region = midwest, seeds = c(1, 16, 8, 9), round = "R64")
+midwest2 <- sim_four(midwest, seeds = c(4, 5, 12, 13), round = "R64")
+midwest3 <- sim_four(midwest, seeds = c(3, 14, 6, 11), round = "R64")
+midwest4 <- sim_four(midwest, seeds = c(2, 15, 7, 10), round = "R64")
+
+# round of 32
+midwest21 <- sim_two(quad = midwest1, round = "R32")
+midwest22 <- sim_two(midwest2, "R32")
+midwest23 <- sim_two(midwest3, "R32")
+midwest24 <- sim_two(midwest4, "R32")
+
+# south ----
+
+# round of 64
+south1 <- sim_four(region = south, seeds = c(1, 16, 8, 9), round = "R64")
+south2 <- sim_four(south, seeds = c(4, 5, 12, 13), round = "R64")
+south3 <- sim_four(south, seeds = c(3, 14, 6, 11), round = "R64")
+south4 <- sim_four(south, seeds = c(2, 15, 7, 10), round = "R64")
+
+# round of 32
+south21 <- sim_two(quad = south1, round = "R32")
+south22 <- sim_two(south2, "R32")
+south23 <- sim_two(south3, "R32")
+south24 <- sim_two(south4, "R32")
