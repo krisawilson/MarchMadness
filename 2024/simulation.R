@@ -2,7 +2,7 @@
 suppressMessages(library(tidyverse))
 library(ordinal) # for prediction
 # not sure why it's reading in weird, but removed the first column
-clean_yr <- read_csv("data/clean-2024.csv") |> select(-1)
+clean_yr <- read_csv("2024/clean-2024.csv", col_select = -1)
 # predictions ----
 
 # load in model
@@ -14,7 +14,7 @@ std24 <- clean_yr |> select(-team, -conf, -seed) |> scale() |> data.frame()
 wholedf <- cbind(select(clean_yr, team, conf, seed), std24)
 # prediction!
 preds <- predict(probit, wholedf, type = "prob")
-p2 <- predict(probit, wholedf, type = "class")
+#p2 <- predict(probit, wholedf, type = "class") ## vector of predicted classes
 preds <- as.data.frame(preds) # turn into data frame 
 # change column names
 colnames(preds) <- sub("^fit\\.", "", colnames(preds))
