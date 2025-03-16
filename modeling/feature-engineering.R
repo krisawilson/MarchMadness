@@ -36,7 +36,8 @@ std_dat <- trim_dat |>
                 ~ (. - mean(., na.rm = TRUE)) / sd(., na.rm = TRUE),
                 .names = "std_{.col}")) |> 
   select(c(1:11, upset_yes, contains("std")))
-rm(trim_dat, full_data)
+rm(full_data)
 
 # done here!
+write_csv(trim_dat, "data/clean-data.csv")
 write_csv(std_dat, "data/standardized-data.csv")
