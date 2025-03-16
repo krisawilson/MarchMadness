@@ -134,11 +134,6 @@ scrape_bracket_wbb <- function(url, year) {
         row_number() > 45 & row_number() <= 60 ~ "region4", 
         row_number() > 60 & row_number() <= 62 ~ "final four", 
         row_number() == 63 ~ "championship"), 
-      # add column for upsets
-      upset = case_when(
-        winner == team1 & seed1 > seed2 ~ "yes",
-        winner == team2 & seed2 > seed1 ~ "yes",
-        TRUE ~ "no"),
       # add column for year
       year = year
     )
