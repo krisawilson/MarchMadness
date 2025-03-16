@@ -1,26 +1,23 @@
 # grab functions
-source("data/data-cleaning-functions.R")
+source("preprocessing/code/data-cleaning-functions.R")
 
 # load packages
-require(rvest, quietly = TRUE)
-require(dplyr, warn.conflicts = FALSE)
-require(purrr, quietly = TRUE)
-require(stringr, quietly = TRUE)
+
 
 # grab bracket data ----
 # 2024
 t24 <- "https://www.sports-reference.com/cbb/postseason/women/2024-ncaa.html"
-b24 <- scrape_bracket(url = t24, year = 2024)
+b24 <- scrape_bracket_wbb(url = t24, year = 2024)
 # 2023
 t23 <- "https://www.sports-reference.com/cbb/postseason/women/2023-ncaa.html"
-b23 <- scrape_bracket(url = t23, year = 2023)
+b23 <- scrape_bracket_wbb(url = t23, year = 2023)
 # manually fix the Stanford vs Sacred Heart error
 b23[46,"seed2"] <- 16; b23[46,"score1"] <- 92; 
 b23[46, "score2"] <- 49; b23[46,"winner"] <- "Stanford";
 
 # 2022
 t22 <- "https://www.sports-reference.com/cbb/postseason/women/2022-ncaa.html"
-b22 <- scrape_bracket(url = t22, year = 2022)
+b22 <- scrape_bracket_wbb(url = t22, year = 2022)
 rm(t22,t23,t24)
 
 # get full data: ----
@@ -28,9 +25,9 @@ rat24 <- "https://www.sports-reference.com/cbb/seasons/women/2024-ratings.html"
 rat23 <- "https://www.sports-reference.com/cbb/seasons/women/2023-ratings.html"
 rat22 <- "https://www.sports-reference.com/cbb/seasons/women/2022-ratings.html"
 
-ratings24 <- clean_data(url = rat24, year = 2024)
-ratings23 <- clean_data(url = rat24, year = 2023)
-ratings22 <- clean_data(url = rat24, year = 2022)
+ratings24 <- scrape_adv_stats_wbb(url = rat24, year = 2024)
+ratings23 <- scrape_adv_stats_wbb(url = rat24, year = 2023)
+ratings22 <- scrape_adv_stats_wbb(url = rat24, year = 2022)
 rm(rat22,rat23,rat24)
 
 
@@ -39,9 +36,9 @@ u24 <- "https://www.sports-reference.com/cbb/seasons/women/2024-advanced-school-
 u23 <- "https://www.sports-reference.com/cbb/seasons/women/2023-advanced-school-stats.html"
 u22 <- "https://www.sports-reference.com/cbb/seasons/women/2022-advanced-school-stats.html"
 
-p24 <- get_pace(url = u24, year = 2024)
-p23 <- get_pace(url = u23, year = 2023)
-p22 <- get_pace(url = u22, year = 2022)
+p24 <- get_pace_wbb(url = u24, year = 2024)
+p23 <- get_pace_wbb(url = u23, year = 2023)
+p22 <- get_pace_wbb(url = u22, year = 2022)
 rm(u24,u23,u22)
 
 # combine data ----
@@ -58,7 +55,7 @@ team_stats <- team_stats |>
   # move pace around
   relocate(Pace, .before = MOV) |> select(-Rk) |> 
   # consistent team names
-  mutate(School = team_names(School))
+  mutate(School = team_names_wbb(School))
 rm(paces, ratings)
 
 # final join! team 1 first

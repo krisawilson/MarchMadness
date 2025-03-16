@@ -1,20 +1,24 @@
-# DATA CLEANING FUNCTIONS ----
+# NCAAW DATA CLEANING FUNCTIONS ----
 
-# Load required libraries
-#require(rvest, quietly = TRUE)
-#require(dplyr, quietly = TRUE)
-#require(purrr, quietly = TRUE)
-#require(stringr, quietly = TRUE)
-
-extract_team_info <- function(team_node) {
+extract_team_info_wbb <- function(team_node) {
   #####
+  # This function takes in one input, an HTML node, representing
+  # each team for a March Madness game. The function outputs
+  # a list, containing the seeds for each team, the team name,
+  # and the score of the game.
   ## Parameters ##
   
   # Input: team_node: from HTML
   
   # Output: list of seeds, teams, score
   #####
-  # 3xtract seed (first <span>)
+  
+  # first, check if rvest loaded in. if not, load it in
+  if (!"rvest" %in% .packages()) {
+    library(rvest)
+  }
+  
+  # extract seed (first <span>)
   seed <- team_node |> html_node("span") |> html_text(trim = TRUE)
   
   # 3xtract team name and score:
@@ -45,19 +49,33 @@ extract_team_info <- function(team_node) {
   )
 }
 
-# Define the main function that scrapes a bracket page and returns a data frame.
-scrape_bracket <- function(url, year) {
+scrape_bracket_wbb <- function(url, year) {
   #####
-  ## Parameters ##
+  # This function takes in two inputs, a string url, and a year.
+  # This function creates the tournament bracket for a given 
+  # year for the women's NCAA tournament.
+
+  ## inputs ##
+  # url (string): a string with the url/link to the webpage
+  # year (int): a year 2010 or later
   
-  # Input: 
-  # url: url for the March Madness bracket
-  # year: year of the tournament
-  
-  # Output: final_df: data frame of teams, scores, and round of tournament
+  ## outputs ##
+  # final_df: a data frame where each row is an NCAA tournament
+  # game. This includes seeds, scores, the winner, round of
+  # the tournament, and whether the game was an upset
   #####
-  if (year < 2010 | year > 2025) {
-    stop("Year must be between 2010 and 2025.")
+  
+  # load required packages if not loaded in already
+  packages <- c("dplyr", "rvest") # grab packages
+  for (pkg in packages) {
+    if (!pkg %in% .packages()) {
+      library(pkg, character.only = TRUE)
+    }
+  }
+  
+  # year check
+  if (year < 2009) {
+    stop("Year must be 2010 or later.")
   }
   # Read the HTML page from the URL
   page <- read_html(url)
@@ -76,8 +94,8 @@ scrape_bracket <- function(url, year) {
     if (length(team_nodes) < 2) next # error handling
     
     # extract info for each team using extract_team_info
-    team1_info <- extract_team_info(team_nodes[1])
-    team2_info <- extract_team_info(team_nodes[2])
+    team1_info <- extract_team_info_wbb(team_nodes[1])
+    team2_info <- extract_team_info_wbb(team_nodes[2])
     
     # in the HTML, the winning team is indicated by having a class     
     # "winner" on its team block. thanks sports reference!
@@ -94,14 +112,10 @@ scrape_bracket <- function(url, year) {
     
     # Create a data frame row for this game
     game_df <- data.frame(
-      seed1  = team1_info$seed,
-      team1  = team1_info$team,
-      seed2  = team2_info$seed,
-      team2  = team2_info$team,
-      score1 = team1_info$score,
-      score2 = team2_info$score,
-      winner = winner,
-      stringsAsFactors = FALSE
+      seed1  = team1_info$seed, team1  = team1_info$team,
+      seed2  = team2_info$seed, team2  = team2_info$team,
+      score1 = team1_info$score, score2 = team2_info$score,
+      winner = winner, stringsAsFactors = FALSE
     )
     games_list[[length(games_list) + 1]] <- game_df
   }
@@ -109,6 +123,7 @@ scrape_bracket <- function(url, year) {
   # combine into one data frame
   result_df <- bind_rows(games_list)
   
+  # create final data frame
   final_df <- result_df |>
     mutate(
       # add column for regionals vs final four
@@ -117,31 +132,43 @@ scrape_bracket <- function(url, year) {
         row_number() > 15 & row_number() <= 30 ~ "region2", 
         row_number() > 30 & row_number() <= 45 ~ "region3", 
         row_number() > 45 & row_number() <= 60 ~ "region4", 
-        # final four
         row_number() > 60 & row_number() <= 62 ~ "final four", 
         row_number() == 63 ~ "championship"), 
+      # add column for upsets
       upset = case_when(
         winner == team1 & seed1 > seed2 ~ "yes",
         winner == team2 & seed2 > seed1 ~ "yes",
         TRUE ~ "no"),
+      # add column for year
       year = year
     )
   return(final_df)
 }
 
-# convert webpage into data frame!
-clean_data <- function(url, year) {
+scrape_adv_stats_wbb <- function(url, year) {
   #####
-  ## Parameters ##
+  # This function takes in two inputs, a string url, and a year.
+  # This function converts the SR webpage of advanced statistics
+  # into a data frame of advanced statistics for women's 
+  # basketball teams for a given NCAA season.
+
+  ## inputs ##
+  # url (string): a string with the url/link to the webpage
+  # year (int): a year between 2010 or later
   
-  # Input: 
-  # url: url for NCAA team stats
-  # year: year of the tournament
-  
-  # Output: clean_table: data frame of cleaned data
+  ## outputs ##
+  # clean_table: a data frame which contains the school/university
+  # and advanced statistics.
   #####
-  if (year < 2010 | year > 2025) {
-    stop("Year must be between 2010 and 2025.")
+  packages <- c("dplyr", "rvest") # grab packages
+  for (pkg in packages) {
+    if (!pkg %in% .packages()) {
+      library(pkg, character.only = TRUE)
+    }
+  }
+  # year check
+  if (year < 2009) {
+    stop("Year must be 2010 or later.")
   }
   # read in webpage
   webpage <- read_html(url)
@@ -181,9 +208,29 @@ clean_data <- function(url, year) {
   return(clean_table)
 }
 
-get_pace <- function(url, year) {
-  if (year < 2010 | year > 2025) {
-    stop("Year must be between 2010 and 2025.")
+get_pace_wbb <- function(url, year) {
+  #####
+  # This function takes in two inputs, a string url, and a year.
+  # Very similar to the above function, this function extracts
+  # the pace column from sports reference's wbb advanced stats
+  
+  ## inputs ##
+  # url (string): a string with the url/link to the webpage
+  # year (int): a year between 2010 and 2025
+  
+  ## outputs ##
+  # clean_tab: a data frame which contains the school/university
+  # and their pace of play
+  #####
+  packages <- c("dplyr", "rvest", "stringr")
+  for (pkg in packages) {
+    if (!pkg %in% .packages()) {
+      library(pkg, character.only = TRUE)
+    }
+  }
+  # year check
+  if (year < 2009) {
+    stop("Year must be 2010 or later.")
   }
   # Read the webpage and extract the table
   page <- read_html(url)
@@ -209,7 +256,17 @@ get_pace <- function(url, year) {
   return(clean_tab)
 }
 
-team_names <- function(col) {
+team_names_wbb <- function(col) {
+  #####
+  # This function is meant to be applied on a column in a 
+  # dataset, i.e., used inside of `mutate()` or similar.
+  # Takes in one input, the column, and edits the values of
+  # the column as seen below.
+  #####
+  if (!"dplyr" %in% .packages()) {
+    library(dplyr)
+  }
+  # manually fix name discrepancies
   case_when(
     col == "North Carolina" ~ "UNC",
     col == "Louisiana State" ~ "LSU",
