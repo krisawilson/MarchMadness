@@ -1,5 +1,7 @@
 # load packagess and data!
 library(tidyverse)
+
+# need the -1 bc created data with write.csv
 full_data <- read_csv("data/brackets-and-stats.csv") |> select(-1)
 
 # let's get cooking ----
@@ -10,6 +12,8 @@ trim_dat <- full_data |>
             L_team2, Conf_team1, Conf_team2)) |> 
   # add binary outcome for win
   mutate(team1_win = if_else(winner == team1, 1, 0),
+         # turn upset into yes/no
+         upset_yes = if_else(upset == "yes", 1, 0),
          # compute differences for each game
          MOV_game = abs(score1 - score2),
          seed_diff = abs(seed1 - seed2),
@@ -23,14 +27,15 @@ trim_dat <- full_data |>
          Adj_ORtg_diff = Adj_ORtg_team1 - Adj_ORtg_team2,
          Adj_DRtg_diff = Adj_DRtg_team1 - Adj_DRtg_team2) |> 
   # keep differenced columns now
-  select(c(1:10, team1_win, MOV_game, contains("diff")))
+  select(c(1:8, year, team1_win, upset_yes,
+           MOV_game, contains("diff")))
 
 # standardize covariates
 std_dat <- trim_dat |> 
   mutate(across(c(MOV_game, contains("diff")),
                 ~ (. - mean(., na.rm = TRUE)) / sd(., na.rm = TRUE),
                 .names = "std_{.col}")) |> 
-  select(c(1:11, contains("std")))
+  select(c(1:11, upset_yes, contains("std")))
 rm(trim_dat, full_data)
 
 # done here!
