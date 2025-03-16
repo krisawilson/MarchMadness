@@ -2,7 +2,7 @@
 library(tidyverse)
 
 # need the -1 bc created data with write.csv
-full_data <- read_csv("data/brackets-and-stats.csv") |> select(-1)
+full_data <- read_csv("data/full-data.csv") |> select(-1)
 
 # let's get cooking ----
 # first, grab relevant features

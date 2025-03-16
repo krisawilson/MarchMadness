@@ -277,6 +277,7 @@ team_names_wbb <- function(col) {
     col == "Brigham Young" ~ "BYU",
     col == "Nevada-Las Vegas" ~ "UNLV",
     col == "UC Irvine" ~ "UC-Irvine",
+    col == "UC Davis" ~ "UC-Davis",
     col == "IU Indy" ~ "IU Indianapolis",
     TRUE ~ col  
   )
