@@ -80,6 +80,6 @@ full_dat <- full_dat |>
                       grep("_team1$", names(full_dat), 
                            value = TRUE))))
 # write CSVs!
-#write.csv(brackets, "data/brackets.csv")
-#write.csv(team_stats, "data/team-data.csv")
-#write.csv(full_dat, "data/brackets-and-stats.csv")
+write.csv(brackets, "data/brackets.csv")
+write.csv(team_stats, "data/team-data.csv")
+write.csv(full_dat, "data/brackets-and-stats.csv")
