@@ -203,7 +203,7 @@ scrape_adv_stats_wbb <- function(url, year) {
   return(clean_table)
 }
 
-get_pace_wbb <- function(url, year) {
+scrape_pace_wbb <- function(url, year) {
   #####
   # This function takes in two inputs, a string url, and a year.
   # Very similar to the above function, this function extracts
@@ -263,6 +263,7 @@ team_names_wbb <- function(col) {
   }
   # manually fix name discrepancies
   case_when(
+    # from Sports Reference
     col == "North Carolina" ~ "UNC",
     col == "Louisiana State" ~ "LSU",
     col == "Connecticut" ~ "UConn",
@@ -274,6 +275,92 @@ team_names_wbb <- function(col) {
     col == "UC Irvine" ~ "UC-Irvine",
     col == "UC Davis" ~ "UC-Davis",
     col == "IU Indy" ~ "IU Indianapolis",
+    
+    # from NCAA bracket
+    col == "Ball St." ~ "Ball State",
+    col == "Florida St." ~ "Florida State",
+    col == "San Diego St." ~ "San Diego State",
+    col == "Michigan St." ~ "Michigan State",
+    col == "Norfolk St." ~ "Norfolk State",
+    col == "Oregon St." ~ "Oregon State",
+    col == "Mississippi St." ~ "Mississippi State",
+    col == "Kansas St." ~ "Kansas State",
+    col == "Murray St." ~ "Murray State",
+    col == "FGCU" ~ "Florida Gulf Coast",
+    col == "Oklahoma St." ~ "Oklahoma State",
+    col == "South Dakota St." ~ "South Dakota State",
+    col == "Arkansas St." ~ "Arkansas State",
+    col == "South Fla." ~ "South Florida",
+    col == "Ohio St." ~ "Ohio State",
+    col == "Montana St." ~ "Montana State",
+    col == "SFA" ~ "Stephen F. Austin",
     TRUE ~ col  
   )
+}
+
+scrape_bracket_ncaaw <- function(url) {
+  packages <- c("dplyr", "rvest") # grab packages
+  for (pkg in packages) {
+    if (!pkg %in% .packages()) {
+      library(pkg, character.only = TRUE)
+    }
+  }
+  page <- read_html(url)
+  regions <- page |> html_nodes(".region") # grab regions
+  
+  # initialize bracket
+  bracket_data <- data.frame(
+    region = character(), round = character(),
+    team  = character(), seed  = character(),
+    stringsAsFactors = FALSE
+  )
+  
+  for (region in regions) {
+    region_name <- region |> 
+      html_node("h3") |> 
+      html_text(trim = TRUE)
+    
+    # rounds are contained in divs with class 'region-round'
+    # for each region
+    rounds <- region |> html_nodes(".region-round")
+    
+    for (r in rounds) {
+      # extract round info from the class attribute 
+      round_class <- r |> html_attr("class")
+      
+      # get games
+      games <- r |> html_nodes(".play-pod")
+      
+      # Loop over games
+      for (game in games) {
+        teams <- game |> html_nodes(".team")
+        
+        # get team names and seeds
+        for (team in teams) {
+          team_name <- team |> 
+            html_node(".name") |> 
+            html_text(trim = TRUE)
+          seed <- team |> 
+            html_node(".seed") |> 
+            html_text(trim = TRUE)
+          # add info to df
+          bracket_data <- rbind(
+            bracket_data,data.frame(
+              region = region_name, round = round_class,
+              team  = team_name, seed  = seed,
+              stringsAsFactors = FALSE
+            )
+          )
+        }
+      }
+    }
+  }
+  
+  # manually edit bracket_data
+  bracket_data <- bracket_data |> 
+    select(-round) |> 
+    mutate(team = if_else(team == "", "First Four", team),
+           seed = if_else(seed == "", "16", seed), seed,
+           seed = as.numeric(seed))
+  return(bracket_data)
 }

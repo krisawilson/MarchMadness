@@ -46,11 +46,11 @@ u23 <- "https://www.sports-reference.com/cbb/seasons/women/2023-advanced-school-
 u22 <- "https://www.sports-reference.com/cbb/seasons/women/2022-advanced-school-stats.html"
 u19 <- "https://www.sports-reference.com/cbb/seasons/women/2019-advanced-school-stats.html"
 u18 <- "https://www.sports-reference.com/cbb/seasons/women/2018-advanced-school-stats.html"
-p24 <- get_pace_wbb(url = u24, year = 2024)
-p23 <- get_pace_wbb(url = u23, year = 2023)
-p22 <- get_pace_wbb(url = u22, year = 2022)
-p19 <- get_pace_wbb(url = u19, year = 2019)
-p18 <- get_pace_wbb(url = u19, year = 2018)
+p24 <- scrape_pace_wbb(url = u24, year = 2024)
+p23 <- scrape_pace_wbb(url = u23, year = 2023)
+p22 <- scrape_pace_wbb(url = u22, year = 2022)
+p19 <- scrape_pace_wbb(url = u19, year = 2019)
+p18 <- scrape_pace_wbb(url = u19, year = 2018)
 rm(u24,u23,  u22, u19, u18)
 
 # combine data ----
