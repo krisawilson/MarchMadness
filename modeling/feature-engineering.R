@@ -12,9 +12,10 @@ trim_dat <- full_data |>
             L_team2, Conf_team1, Conf_team2)) |> 
   # add binary outcome for win
   mutate(team1_win = if_else(winner == team1, 1, 0),
-         # compute differences for each game
-         MOV_game = abs(score1 - score2),
-         seed_diff = abs(seed1 - seed2),
+         # compute differences for each game. can't do things like
+         # margin of victory or seed difference since won't have
+         # that when I go to do actual predictions on unplayed
+         # tournaments. that's data leakage!
          PPG_diff = PPG_team1 - PPG_team2,
          PPG_Allowed_diff = PPG_Allowed_team1 - PPG_Allowed_team2,
          Pace_diff = Pace_team1 - Pace_team2,
@@ -25,7 +26,7 @@ trim_dat <- full_data |>
          Adj_ORtg_diff = Adj_ORtg_team1 - Adj_ORtg_team2,
          Adj_DRtg_diff = Adj_DRtg_team1 - Adj_DRtg_team2) |> 
   # keep differenced columns now
-  select(c(1:9, team1_win, MOV_game, contains("diff")))
+  select(c(1:9, team1_win, contains("diff")))
 
 # standardize covariates
 #std_dat <- trim_dat |> 

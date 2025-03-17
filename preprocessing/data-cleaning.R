@@ -1,8 +1,5 @@
 # grab functions
-source("preprocessing/code/data-cleaning-functions.R")
-
-# load packages
-
+source("preprocessing/functions/data-cleaning-functions.R")
 
 # grab bracket data ----
 # 2024

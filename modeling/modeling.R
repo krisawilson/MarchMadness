@@ -76,13 +76,13 @@ rm(xgb_model, xgboost_tune_grid)
 
 # fifth up: gams! ----
 # change the data back to 0/1
-train_data <- train_data |> 
-  mutate(team1_win = if_else(team1_win == "yes", 1, 0))
-
-gam_model <- gam(team1_win ~ s(MOV_game) + 
-                   s(MOV_diff) + s(OSRS_diff) +
-                   s(DSRS_diff), data = train_data, 
-                 family = "binomial", method = "REML")
+#train_data <- train_data |> 
+#  mutate(team1_win = if_else(team1_win == "yes", 1, 0))
+#
+# gam_model <- gam(team1_win ~ s(MOV_game) + 
+#                    s(MOV_diff) + s(OSRS_diff) +
+#                    s(DSRS_diff), data = train_data, 
+#                  family = "binomial", method = "REML")
 
 # evaluation time! ----
 test_data <- test_data |> 
@@ -93,9 +93,9 @@ logit_preds <- predict(logit_model, test_data, type = "response")
 roc_logit <- roc(test_data$team1_win, logit_preds) # from pROC
 auc(roc_logit)
 logit_classes <- if_else(logit_preds >= 0.5, "yes", "no")
-confusionMatrix(as.factor(logit_classes), 
-                reference = test_data$team1_win, 
-                positive = "yes")
+confusionMatrix(as.factor(logit_classes),
+               reference = test_data$team1_win,
+               positive = "yes")
 
 # next up, elastic net
 en_preds <- predict(glmnet_mod, 
@@ -111,9 +111,9 @@ rf_preds_yes <- rf_preds$predictions[,"yes"] # grab the yesses
 roc_rf <- roc(test_data$team1_win, rf_preds_yes)
 auc(roc_rf)
 rf_classes <- if_else(rf_preds_yes >= 0.5, "yes", "no")
-confusionMatrix(as.factor(rf_classes), 
-                reference = test_data$team1_win, 
-                positive = "yes")
+confusionMatrix(as.factor(rf_classes),
+               reference = test_data$team1_win,
+               positive = "yes")
 
 # fourth up, xgboost
 xgb_preds <- predict(xgb_fit, 

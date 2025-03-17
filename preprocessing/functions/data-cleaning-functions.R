@@ -177,7 +177,7 @@ scrape_adv_stats_wbb <- function(url, year) {
   #assign temporary column names
   
   # remove empty cols
-  table_fix <- table_node |>  select(-c("4", "10", "12"))
+  table_fix <- table_node |> select(-c(where(~ all(is.na(.)))))
   
   # extract the first row as new column names
   new_names <- table_fix[1, ] |> unlist() |> as.character()
