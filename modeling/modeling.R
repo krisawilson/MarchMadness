@@ -10,6 +10,7 @@ library(pROC)
 
 # data prep ----
 clean_data <- read_csv("data/clean-data.csv")
+# get just raw data
 dat <- clean_data |> select(team1_win:length(clean_data))
 # split into training and test! ----
 set.seed(27606)
@@ -84,10 +85,17 @@ gam_model <- gam(team1_win ~ s(MOV_game) +
                  family = "binomial", method = "REML")
 
 # evaluation time! ----
+test_data <- test_data |> 
+  mutate(team1_win = if_else(team1_win == 1, "yes", "no"),
+         team1_win = as.factor(team1_win))
 # first, logistic regression
 logit_preds <- predict(logit_model, test_data, type = "response")
 roc_logit <- roc(test_data$team1_win, logit_preds) # from pROC
 auc(roc_logit)
+logit_classes <- if_else(logit_preds >= 0.5, "yes", "no")
+confusionMatrix(as.factor(logit_classes), 
+                reference = test_data$team1_win, 
+                positive = "yes")
 
 # next up, elastic net
 en_preds <- predict(glmnet_mod, 
@@ -102,24 +110,28 @@ rf_preds <- predict(rf_mod, test_data)
 rf_preds_yes <- rf_preds$predictions[,"yes"] # grab the yesses
 roc_rf <- roc(test_data$team1_win, rf_preds_yes)
 auc(roc_rf)
-#rf_classes <- if_else(rf_preds >= 0.5, "yes", "no")
-#confusionMatrix(as.factor(rf_classes), 
-#                reference = test_data$team1_win, 
-#                positive = "yes")
+rf_classes <- if_else(rf_preds_yes >= 0.5, "yes", "no")
+confusionMatrix(as.factor(rf_classes), 
+                reference = test_data$team1_win, 
+                positive = "yes")
 
 # fourth up, xgboost
 xgb_preds <- predict(xgb_fit, 
                      as.matrix(select(test_data, -team1_win)))
 roc_xgb <- roc(test_data$team1_win, xgb_preds)
+auc(roc_xgb)
 #xgb_classes <- if_else(xgb_preds <= 0.5, "yes", "no")
 #confusionMatrix(as.factor(xgb_classes), 
 #                reference = test_data$team1_win, 
 #                positive = "yes")
 
 # last but certainly not least: the gam
-gam_preds <- predict(gam_model, select(test_data, -team1_win), 
-                                       type = "response")
-roc_gam <- roc(test_data$team1_win, as.numeric(gam_preds))
-auc(roc_gam)
+#gam_preds <- predict(gam_model, select(test_data, -team1_win), 
+#                                       type = "response")
+#roc_gam <- roc(test_data$team1_win, as.numeric(gam_preds))
+#auc(roc_gam)
 
-# takeaway: random forest is the way to go!
+# takeaway: probably mix the random forest and logistic regression models
+
+# save models!
+save(logit_model, rf_mod, file = "modeling/models.RData")

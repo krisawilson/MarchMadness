@@ -25,16 +25,16 @@ trim_dat <- full_data |>
          Adj_ORtg_diff = Adj_ORtg_team1 - Adj_ORtg_team2,
          Adj_DRtg_diff = Adj_DRtg_team1 - Adj_DRtg_team2) |> 
   # keep differenced columns now
-  select(c(1:8, year, team1_win, MOV_game, contains("diff")))
+  select(c(1:9, team1_win, MOV_game, contains("diff")))
 
 # standardize covariates
-std_dat <- trim_dat |> 
-  mutate(across(c(MOV_game, contains("diff")),
-                ~ (. - mean(., na.rm = TRUE)) / sd(., na.rm = TRUE),
-                .names = "std_{.col}")) |> 
-  select(c(1:11, contains("std")))
+#std_dat <- trim_dat |> 
+#  mutate(across(c(MOV_game, contains("diff")),
+#                ~ (. - mean(., na.rm = TRUE)) / sd(., na.rm = TRUE),
+#                .names = "std_{.col}")) |> 
+#  select(c(1:10, contains("std")))
 rm(full_data)
 
 # done here!
 write_csv(trim_dat, "data/clean-data.csv")
-write_csv(std_dat, "data/standardized-data.csv")
+#write_csv(std_dat, "data/standardized-data.csv")

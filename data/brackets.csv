@@ -1,316 +1,316 @@
-"","seed1","team1","seed2","team2","score1","score2","winner","region","upset","year"
-"1",1,"South Carolina",16,"Presbyterian",91,39,"South Carolina","region1","no",2024
-"2",8,"UNC",9,"Michigan State",59,56,"UNC","region1","no",2024
-"3",5,"Oklahoma",12,"Florida Gulf Coast",73,70,"Oklahoma","region1","no",2024
-"4",4,"Indiana",13,"Fairfield",89,56,"Indiana","region1","no",2024
-"5",6,"Nebraska",11,"Texas A&M",61,59,"Nebraska","region1","no",2024
-"6",3,"Oregon State",14,"Eastern Washington",73,51,"Oregon State","region1","no",2024
-"7",7,"Ole Miss",10,"Marquette",67,55,"Ole Miss","region1","no",2024
-"8",2,"Notre Dame",15,"Kent State",81,67,"Notre Dame","region1","no",2024
-"9",1,"South Carolina",8,"UNC",88,41,"South Carolina","region1","no",2024
-"10",5,"Oklahoma",4,"Indiana",68,75,"Indiana","region1","no",2024
-"11",6,"Nebraska",3,"Oregon State",51,61,"Oregon State","region1","no",2024
-"12",7,"Ole Miss",2,"Notre Dame",56,71,"Notre Dame","region1","no",2024
-"13",1,"South Carolina",4,"Indiana",79,75,"South Carolina","region1","no",2024
-"14",3,"Oregon State",2,"Notre Dame",70,65,"Oregon State","region1","yes",2024
-"15",1,"South Carolina",3,"Oregon State",70,58,"South Carolina","region1","no",2024
-"16",1,"Iowa",16,"Holy Cross",91,65,"Iowa","region2","no",2024
-"17",8,"West Virginia",9,"Princeton",63,53,"West Virginia","region2","no",2024
-"18",5,"Colorado",12,"Drake",86,72,"Colorado","region2","no",2024
-"19",4,"Kansas State",13,"Portland",78,65,"Kansas State","region2","no",2024
-"20",6,"Louisville",11,"Middle Tennessee",69,71,"Middle Tennessee","region2","yes",2024
-"21",3,"LSU",14,"Rice",70,60,"LSU","region2","no",2024
-"22",7,"Creighton",10,"UNLV",87,73,"Creighton","region2","no",2024
-"23",2,"UCLA",15,"California Baptist",84,55,"UCLA","region2","no",2024
-"24",1,"Iowa",8,"West Virginia",64,54,"Iowa","region2","no",2024
-"25",5,"Colorado",4,"Kansas State",63,50,"Colorado","region2","yes",2024
-"26",11,"Middle Tennessee",3,"LSU",56,83,"LSU","region2","no",2024
-"27",7,"Creighton",2,"UCLA",63,67,"UCLA","region2","no",2024
-"28",1,"Iowa",5,"Colorado",89,68,"Iowa","region2","no",2024
-"29",3,"LSU",2,"UCLA",78,69,"LSU","region2","yes",2024
-"30",1,"Iowa",3,"LSU",94,87,"Iowa","region2","no",2024
-"31",1,"USC",16,"Texas A&M-Corpus Christi",87,55,"USC","region3","no",2024
-"32",8,"Kansas",9,"Michigan",81,72,"Kansas","region3","no",2024
-"33",5,"Baylor",12,"Vanderbilt",80,63,"Baylor","region3","no",2024
-"34",4,"Virginia Tech",13,"Marshall",92,49,"Virginia Tech","region3","no",2024
-"35",6,"Syracuse",11,"Arizona",74,69,"Syracuse","region3","no",2024
-"36",3,"UConn",14,"Jackson State",86,64,"UConn","region3","no",2024
-"37",7,"Duke",10,"Richmond",72,61,"Duke","region3","no",2024
-"38",2,"Ohio State",15,"Maine",80,57,"Ohio State","region3","no",2024
-"39",1,"USC",8,"Kansas",73,55,"USC","region3","no",2024
-"40",5,"Baylor",4,"Virginia Tech",75,72,"Baylor","region3","yes",2024
-"41",6,"Syracuse",3,"UConn",64,72,"UConn","region3","no",2024
-"42",7,"Duke",2,"Ohio State",75,63,"Duke","region3","yes",2024
-"43",1,"USC",5,"Baylor",74,70,"USC","region3","no",2024
-"44",3,"UConn",7,"Duke",53,45,"UConn","region3","no",2024
-"45",1,"USC",3,"UConn",73,80,"UConn","region3","yes",2024
-"46",1,"Texas",16,"Drexel",82,42,"Texas","region4","no",2024
-"47",8,"Alabama",9,"Florida State",82,74,"Alabama","region4","no",2024
-"48",5,"Utah",12,"South Dakota State",68,54,"Utah","region4","no",2024
-"49",4,"Gonzaga",13,"UC-Irvine",75,56,"Gonzaga","region4","no",2024
-"50",6,"Tennessee",11,"Green Bay",92,63,"Tennessee","region4","no",2024
-"51",3,"NC State",14,"Chattanooga",64,45,"NC State","region4","no",2024
-"52",7,"Iowa State",10,"Maryland",93,86,"Iowa State","region4","no",2024
-"53",2,"Stanford",15,"Norfolk State",79,50,"Stanford","region4","no",2024
-"54",1,"Texas",8,"Alabama",65,54,"Texas","region4","no",2024
-"55",5,"Utah",4,"Gonzaga",66,77,"Gonzaga","region4","no",2024
-"56",6,"Tennessee",3,"NC State",72,79,"NC State","region4","no",2024
-"57",7,"Iowa State",2,"Stanford",81,87,"Stanford","region4","no",2024
-"58",1,"Texas",4,"Gonzaga",69,47,"Texas","region4","no",2024
-"59",3,"NC State",2,"Stanford",77,67,"NC State","region4","yes",2024
-"60",1,"Texas",3,"NC State",66,76,"NC State","region4","yes",2024
-"61",1,"South Carolina",3,"NC State",78,59,"South Carolina","final four","no",2024
-"62",1,"Iowa",3,"UConn",71,69,"Iowa","final four","no",2024
-"63",1,"South Carolina",1,"Iowa",87,75,"South Carolina","championship","no",2024
-"64",1,"South Carolina",16,"Norfolk State",72,40,"South Carolina","region1","no",2023
-"65",8,"South Florida",9,"Marquette",67,65,"South Florida","region1","no",2023
-"66",5,"Oklahoma",12,"Portland",85,63,"Oklahoma","region1","no",2023
-"67",4,"UCLA",13,"Sacramento State",67,45,"UCLA","region1","no",2023
-"68",6,"Creighton",11,"Mississippi State",66,81,"Mississippi State","region1","yes",2023
-"69",3,"Notre Dame",14,"Southern Utah",82,56,"Notre Dame","region1","no",2023
-"70",7,"Arizona",10,"West Virginia",75,62,"Arizona","region1","no",2023
-"71",2,"Maryland",15,"Holy Cross",93,61,"Maryland","region1","no",2023
-"72",1,"South Carolina",8,"South Florida",76,45,"South Carolina","region1","no",2023
-"73",5,"Oklahoma",4,"UCLA",73,82,"UCLA","region1","no",2023
-"74",11,"Mississippi State",3,"Notre Dame",48,53,"Notre Dame","region1","no",2023
-"75",7,"Arizona",2,"Maryland",64,77,"Maryland","region1","no",2023
-"76",1,"South Carolina",4,"UCLA",59,43,"South Carolina","region1","no",2023
-"77",3,"Notre Dame",2,"Maryland",59,76,"Maryland","region1","no",2023
-"78",1,"South Carolina",2,"Maryland",86,75,"South Carolina","region1","no",2023
-"79",1,"Indiana",16,"Tennessee Tech",77,47,"Indiana","region2","no",2023
-"80",8,"Oklahoma State",9,"Miami (FL)",61,62,"Miami (FL)","region2","yes",2023
-"81",5,"Washington State",12,"Florida Gulf Coast",63,74,"Florida Gulf Coast","region2","yes",2023
-"82",4,"Villanova",13,"Cleveland State",76,59,"Villanova","region2","no",2023
-"83",6,"Michigan",11,"UNLV",71,59,"Michigan","region2","no",2023
-"84",3,"LSU",14,"Hawaii",73,50,"LSU","region2","no",2023
-"85",7,"NC State",10,"Princeton",63,64,"Princeton","region2","yes",2023
-"86",2,"Utah",15,"Gardner-Webb",103,77,"Utah","region2","no",2023
-"87",1,"Indiana",9,"Miami (FL)",68,70,"Miami (FL)","region2","yes",2023
-"88",12,"Florida Gulf Coast",4,"Villanova",57,76,"Villanova","region2","no",2023
-"89",6,"Michigan",3,"LSU",42,66,"LSU","region2","no",2023
-"90",10,"Princeton",2,"Utah",56,63,"Utah","region2","no",2023
-"91",9,"Miami (FL)",4,"Villanova",70,65,"Miami (FL)","region2","yes",2023
-"92",3,"LSU",2,"Utah",66,63,"LSU","region2","yes",2023
-"93",9,"Miami (FL)",3,"LSU",42,54,"LSU","region2","no",2023
-"94",1,"Virginia Tech",16,"Chattanooga",58,33,"Virginia Tech","region3","no",2023
-"95",8,"USC",9,"South Dakota State",57,62,"South Dakota State","region3","yes",2023
-"96",5,"Iowa State",12,"Toledo",73,80,"Toledo","region3","yes",2023
-"97",4,"Tennessee",13,"Saint Louis",95,50,"Tennessee","region3","no",2023
-"98",6,"UNC",11,"St. John's (NY)",61,59,"UNC","region3","no",2023
-"99",3,"Ohio State",14,"James Madison",80,66,"Ohio State","region3","no",2023
-"100",7,"Baylor",10,"Alabama",78,74,"Baylor","region3","no",2023
-"101",2,"UConn",15,"Vermont",95,52,"UConn","region3","no",2023
-"102",1,"Virginia Tech",9,"South Dakota State",72,60,"Virginia Tech","region3","no",2023
-"103",12,"Toledo",4,"Tennessee",47,94,"Tennessee","region3","no",2023
-"104",6,"UNC",3,"Ohio State",69,71,"Ohio State","region3","no",2023
-"105",7,"Baylor",2,"UConn",58,77,"UConn","region3","no",2023
-"106",1,"Virginia Tech",4,"Tennessee",73,64,"Virginia Tech","region3","no",2023
-"107",3,"Ohio State",2,"UConn",73,61,"Ohio State","region3","yes",2023
-"108",1,"Virginia Tech",3,"Ohio State",84,74,"Virginia Tech","region3","no",2023
-"109",1,"Stanford",16,"Sacred Heart",92,49,"Stanford","region4","no",2023
-"110",8,"Ole Miss",9,"Gonzaga",71,48,"Ole Miss","region4","no",2023
-"111",5,"Louisville",12,"Drake",83,81,"Louisville","region4","no",2023
-"112",4,"Texas",13,"East Carolina",79,40,"Texas","region4","no",2023
-"113",6,"Colorado",11,"Middle Tennessee",82,60,"Colorado","region4","no",2023
-"114",3,"Duke",14,"Iona",89,49,"Duke","region4","no",2023
-"115",7,"Florida State",10,"Georgia",54,66,"Georgia","region4","yes",2023
-"116",2,"Iowa",15,"Southeastern Louisiana",95,43,"Iowa","region4","no",2023
-"117",1,"Stanford",8,"Ole Miss",49,54,"Ole Miss","region4","yes",2023
-"118",5,"Louisville",4,"Texas",73,51,"Louisville","region4","yes",2023
-"119",6,"Colorado",3,"Duke",61,53,"Colorado","region4","yes",2023
-"120",10,"Georgia",2,"Iowa",66,74,"Iowa","region4","no",2023
-"121",8,"Ole Miss",5,"Louisville",62,72,"Louisville","region4","no",2023
-"122",6,"Colorado",2,"Iowa",77,87,"Iowa","region4","no",2023
-"123",5,"Louisville",2,"Iowa",83,97,"Iowa","region4","no",2023
-"124",1,"Virginia Tech",3,"LSU",72,79,"LSU","final four","yes",2023
-"125",1,"South Carolina",2,"Iowa",73,77,"Iowa","final four","yes",2023
-"126",3,"LSU",2,"Iowa",102,85,"LSU","championship","yes",2023
-"127",1,"NC State",16,"Longwood",96,68,"NC State","region1","no",2022
-"128",8,"Washington State",9,"Kansas State",40,50,"Kansas State","region1","yes",2022
-"129",5,"Notre Dame",12,"UMass",89,78,"Notre Dame","region1","no",2022
-"130",4,"Oklahoma",13,"IU Indianapolis",78,72,"Oklahoma","region1","no",2022
-"131",6,"Kentucky",11,"Princeton",62,69,"Princeton","region1","yes",2022
-"132",3,"Indiana",14,"Charlotte",85,51,"Indiana","region1","no",2022
-"133",7,"UCF",10,"Florida",69,52,"UCF","region1","no",2022
-"134",2,"UConn",15,"Mercer",83,38,"UConn","region1","no",2022
-"135",1,"NC State",9,"Kansas State",89,57,"NC State","region1","no",2022
-"136",5,"Notre Dame",4,"Oklahoma",108,64,"Notre Dame","region1","yes",2022
-"137",11,"Princeton",3,"Indiana",55,56,"Indiana","region1","no",2022
-"138",7,"UCF",2,"UConn",47,52,"UConn","region1","no",2022
-"139",1,"NC State",5,"Notre Dame",66,63,"NC State","region1","no",2022
-"140",3,"Indiana",14,"Charlotte",85,51,"Indiana","region1","no",2022
-"141",1,"NC State",2,"UConn",87,91,"UConn","region1","yes",2022
-"142",1,"South Carolina",16,"Howard",79,21,"South Carolina","region2","no",2022
-"143",8,"Miami (FL)",9,"South Florida",78,66,"Miami (FL)","region2","no",2022
-"144",5,"UNC",12,"Stephen F. Austin",79,66,"UNC","region2","no",2022
-"145",4,"Arizona",13,"UNLV",72,67,"Arizona","region2","no",2022
-"146",6,"Georgia",11,"Dayton",70,54,"Georgia","region2","no",2022
-"147",3,"Iowa State",14,"UT Arlington",78,71,"Iowa State","region2","no",2022
-"148",7,"Colorado",10,"Creighton",74,84,"Creighton","region2","yes",2022
-"149",2,"Iowa",15,"Illinois State",98,58,"Iowa","region2","no",2022
-"150",1,"South Carolina",8,"Miami (FL)",49,33,"South Carolina","region2","no",2022
-"151",5,"UNC",4,"Arizona",63,45,"UNC","region2","yes",2022
-"152",6,"Georgia",3,"Iowa State",44,67,"Iowa State","region2","no",2022
-"153",10,"Creighton",2,"Iowa",64,62,"Creighton","region2","yes",2022
-"154",1,"South Carolina",5,"UNC",69,61,"South Carolina","region2","no",2022
-"155",3,"Iowa State",10,"Creighton",68,76,"Creighton","region2","yes",2022
-"156",1,"South Carolina",10,"Creighton",80,50,"South Carolina","region2","no",2022
-"157",1,"Stanford",16,"Montana State",78,37,"Stanford","region3","no",2022
-"158",8,"Kansas",9,"Georgia Tech",77,58,"Kansas","region3","no",2022
-"159",5,"Virginia Tech",12,"Florida Gulf Coast",81,84,"Florida Gulf Coast","region3","yes",2022
-"160",4,"Maryland",13,"Delaware",102,71,"Maryland","region3","no",2022
-"161",6,"Ohio State",11,"Missouri State",63,56,"Ohio State","region3","no",2022
-"162",3,"LSU",14,"Jackson State",83,77,"LSU","region3","no",2022
-"163",7,"Utah",10,"Arkansas",92,69,"Utah","region3","no",2022
-"164",2,"Texas",15,"Fairfield",70,52,"Texas","region3","no",2022
-"165",1,"Stanford",8,"Kansas",91,65,"Stanford","region3","no",2022
-"166",12,"Florida Gulf Coast",4,"Maryland",65,89,"Maryland","region3","no",2022
-"167",6,"Ohio State",3,"LSU",79,64,"Ohio State","region3","yes",2022
-"168",7,"Utah",2,"Texas",56,78,"Texas","region3","no",2022
-"169",1,"Stanford",4,"Maryland",72,66,"Stanford","region3","no",2022
-"170",6,"Ohio State",2,"Texas",63,66,"Texas","region3","no",2022
-"171",1,"Stanford",2,"Texas",59,50,"Stanford","region3","no",2022
-"172",1,"Louisville",16,"Albany (NY)",83,51,"Louisville","region4","no",2022
-"173",8,"Nebraska",9,"Gonzaga",55,68,"Gonzaga","region4","yes",2022
-"174",5,"Oregon",12,"Belmont",70,73,"Belmont","region4","yes",2022
-"175",4,"Tennessee",13,"Buffalo",80,67,"Tennessee","region4","no",2022
-"176",6,"BYU",11,"Villanova",57,61,"Villanova","region4","yes",2022
-"177",3,"Michigan",14,"American",74,39,"Michigan","region4","no",2022
-"178",7,"Ole Miss",10,"South Dakota",61,75,"South Dakota","region4","yes",2022
-"179",2,"Baylor",15,"Hawaii",89,49,"Baylor","region4","no",2022
-"180",1,"Louisville",9,"Gonzaga",68,59,"Louisville","region4","no",2022
-"181",12,"Belmont",4,"Tennessee",67,70,"Tennessee","region4","no",2022
-"182",11,"Villanova",3,"Michigan",49,64,"Michigan","region4","no",2022
-"183",10,"South Dakota",2,"Baylor",61,47,"South Dakota","region4","yes",2022
-"184",1,"Louisville",4,"Tennessee",76,64,"Louisville","region4","no",2022
-"185",3,"Michigan",10,"South Dakota",52,49,"Michigan","region4","no",2022
-"186",1,"Louisville",3,"Michigan",62,50,"Louisville","region4","no",2022
-"187",1,"South Carolina",1,"Louisville",72,59,"South Carolina","final four","no",2022
-"188",1,"Stanford",2,"UConn",58,63,"UConn","final four","yes",2022
-"189",1,"South Carolina",2,"UConn",64,49,"South Carolina","championship","no",2022
-"190",1,"Louisville",16,"Robert Morris",69,34,"Louisville","region1","no",2019
-"191",8,"Michigan",9,"Kansas State",84,54,"Michigan","region1","no",2019
-"192",5,"Gonzaga",12,"Little Rock",68,51,"Gonzaga","region1","no",2019
-"193",4,"Oregon State",13,"Boise State",80,75,"Oregon State","region1","no",2019
-"194",6,"UCLA",11,"Tennessee",89,77,"UCLA","region1","no",2019
-"195",3,"Maryland",14,"Radford",73,51,"Maryland","region1","no",2019
-"196",7,"Rutgers",10,"Buffalo",71,82,"Buffalo","region1","yes",2019
-"197",2,"UConn",15,"Towson",110,61,"UConn","region1","no",2019
-"198",1,"Louisville",8,"Michigan",71,50,"Louisville","region1","no",2019
-"199",5,"Gonzaga",4,"Oregon State",70,76,"Oregon State","region1","no",2019
-"200",6,"UCLA",3,"Maryland",85,80,"UCLA","region1","yes",2019
-"201",10,"Buffalo",2,"UConn",72,84,"UConn","region1","no",2019
-"202",1,"Louisville",4,"Oregon State",61,44,"Louisville","region1","no",2019
-"203",6,"UCLA",2,"UConn",61,69,"UConn","region1","no",2019
-"204",1,"Louisville",2,"UConn",73,80,"UConn","region1","yes",2019
-"205",1,"Notre Dame",16,"Bethune-Cookman",92,50,"Notre Dame","region2","no",2019
-"206",8,"Central Michigan",9,"Michigan State",87,88,"Michigan State","region2","yes",2019
-"207",5,"Marquette",12,"Rice",58,54,"Marquette","region2","no",2019
-"208",4,"Texas A&M",13,"Wright State",84,61,"Texas A&M","region2","no",2019
-"209",6,"DePaul",11,"Missouri State",78,89,"Missouri State","region2","yes",2019
-"210",3,"Iowa State",14,"New Mexico State",97,61,"Iowa State","region2","no",2019
-"211",7,"BYU",10,"Auburn",73,64,"BYU","region2","no",2019
-"212",2,"Stanford",15,"UC-Davis",79,54,"Stanford","region2","no",2019
-"213",1,"Notre Dame",9,"Michigan State",91,63,"Notre Dame","region2","no",2019
-"214",5,"Marquette",4,"Texas A&M",76,78,"Texas A&M","region2","no",2019
-"215",11,"Missouri State",3,"Iowa State",69,60,"Missouri State","region2","yes",2019
-"216",7,"BYU",2,"Stanford",63,72,"Stanford","region2","no",2019
-"217",1,"Notre Dame",4,"Texas A&M",87,80,"Notre Dame","region2","no",2019
-"218",11,"Missouri State",2,"Stanford",46,55,"Stanford","region2","no",2019
-"219",1,"Notre Dame",2,"Stanford",84,68,"Notre Dame","region2","no",2019
-"220",1,"Baylor",16,"Abilene Christian",95,38,"Baylor","region3","no",2019
-"221",8,"California",9,"UNC",92,72,"California","region3","no",2019
-"222",5,"Florida State",12,"Bucknell",70,67,"Florida State","region3","no",2019
-"223",4,"South Carolina",13,"Belmont",74,52,"South Carolina","region3","no",2019
-"224",6,"Kentucky",11,"Princeton",82,77,"Kentucky","region3","no",2019
-"225",3,"NC State",14,"Maine",63,51,"NC State","region3","no",2019
-"226",7,"Missouri",10,"Drake",77,76,"Missouri","region3","no",2019
-"227",2,"Iowa",15,"Mercer",66,61,"Iowa","region3","no",2019
-"228",1,"Baylor",8,"California",102,63,"Baylor","region3","no",2019
-"229",5,"Florida State",4,"South Carolina",64,72,"South Carolina","region3","no",2019
-"230",6,"Kentucky",3,"NC State",57,72,"NC State","region3","no",2019
-"231",7,"Missouri",2,"Iowa",52,68,"Iowa","region3","no",2019
-"232",1,"Baylor",4,"South Carolina",93,68,"Baylor","region3","no",2019
-"233",3,"NC State",2,"Iowa",61,79,"Iowa","region3","no",2019
-"234",1,"Baylor",2,"Iowa",85,53,"Baylor","region3","no",2019
-"235",1,"Mississippi State",16,"Southern",103,46,"Mississippi State","region4","no",2019
-"236",8,"South Dakota",9,"Clemson",66,79,"Clemson","region4","yes",2019
-"237",5,"Arizona State",12,"UCF",60,45,"Arizona State","region4","no",2019
-"238",4,"Miami (FL)",13,"Florida Gulf Coast",69,62,"Miami (FL)","region4","no",2019
-"239",6,"South Dakota State",11,"Quinnipiac",76,65,"South Dakota State","region4","no",2019
-"240",3,"Syracuse",14,"Fordham",70,49,"Syracuse","region4","no",2019
-"241",7,"Texas",10,"Indiana",65,69,"Indiana","region4","yes",2019
-"242",2,"Oregon",15,"Portland State",78,40,"Oregon","region4","no",2019
-"243",1,"Mississippi State",9,"Clemson",85,61,"Mississippi State","region4","no",2019
-"244",5,"Arizona State",4,"Miami (FL)",57,55,"Arizona State","region4","yes",2019
-"245",6,"South Dakota State",3,"Syracuse",75,64,"South Dakota State","region4","yes",2019
-"246",10,"Indiana",2,"Oregon",68,91,"Oregon","region4","no",2019
-"247",1,"Mississippi State",5,"Arizona State",76,53,"Mississippi State","region4","no",2019
-"248",6,"South Dakota State",2,"Oregon",53,63,"Oregon","region4","no",2019
-"249",1,"Mississippi State",2,"Oregon",84,88,"Oregon","region4","yes",2019
-"250",1,"Baylor",2,"Oregon",72,67,"Baylor","final four","no",2019
-"251",1,"Notre Dame",2,"UConn",81,76,"Notre Dame","final four","no",2019
-"252",1,"Baylor",1,"Notre Dame",82,81,"Baylor","championship","no",2019
-"253",1,"UConn",16,"Saint Francis (PA)",140,52,"UConn","region1","no",2018
-"254",8,"Miami (FL)",9,"Quinnipiac",72,86,"Quinnipiac","region1","yes",2018
-"255",5,"Duke",12,"Belmont",72,58,"Duke","region1","no",2018
-"256",4,"Georgia",13,"Mercer",68,63,"Georgia","region1","no",2018
-"257",6,"South Florida",11,"Buffalo",79,102,"Buffalo","region1","yes",2018
-"258",3,"Florida State",14,"Little Rock",91,49,"Florida State","region1","no",2018
-"259",7,"California",10,"Virginia",62,68,"Virginia","region1","yes",2018
-"260",2,"South Carolina",15,"North Carolina A&T",63,52,"South Carolina","region1","no",2018
-"261",1,"UConn",9,"Quinnipiac",71,46,"UConn","region1","no",2018
-"262",5,"Duke",4,"Georgia",66,40,"Duke","region1","yes",2018
-"263",11,"Buffalo",3,"Florida State",86,65,"Buffalo","region1","yes",2018
-"264",10,"Virginia",2,"South Carolina",56,66,"South Carolina","region1","no",2018
-"265",1,"UConn",5,"Duke",72,59,"UConn","region1","no",2018
-"266",11,"Buffalo",2,"South Carolina",63,79,"South Carolina","region1","no",2018
-"267",1,"UConn",2,"South Carolina",94,65,"UConn","region1","no",2018
-"268",1,"Mississippi State",16,"Nicholls State",95,50,"Mississippi State","region2","no",2018
-"269",8,"Syracuse",9,"Oklahoma State",57,84,"Oklahoma State","region2","yes",2018
-"270",5,"Maryland",12,"Princeton",77,57,"Maryland","region2","no",2018
-"271",4,"NC State",13,"Elon",62,35,"NC State","region2","no",2018
-"272",6,"Iowa",11,"Creighton",70,76,"Creighton","region2","yes",2018
-"273",3,"UCLA",14,"American",71,60,"UCLA","region2","no",2018
-"274",7,"Arizona State",10,"Nebraska",73,62,"Arizona State","region2","no",2018
-"275",2,"Texas",15,"Maine",83,54,"Texas","region2","no",2018
-"276",1,"Mississippi State",9,"Oklahoma State",71,56,"Mississippi State","region2","no",2018
-"277",5,"Maryland",4,"NC State",60,74,"NC State","region2","no",2018
-"278",11,"Creighton",3,"UCLA",64,86,"UCLA","region2","no",2018
-"279",7,"Arizona State",2,"Texas",65,85,"Texas","region2","no",2018
-"280",1,"Mississippi State",4,"NC State",71,57,"Mississippi State","region2","no",2018
-"281",3,"UCLA",2,"Texas",84,75,"UCLA","region2","yes",2018
-"282",1,"Mississippi State",3,"UCLA",89,73,"Mississippi State","region2","no",2018
-"283",1,"Louisville",16,"Boise State",74,42,"Louisville","region3","no",2018
-"284",8,"Marquette",9,"Dayton",84,65,"Marquette","region3","no",2018
-"285",5,"Missouri",12,"Florida Gulf Coast",70,80,"Florida Gulf Coast","region3","yes",2018
-"286",4,"Stanford",13,"Gonzaga",82,68,"Stanford","region3","no",2018
-"287",6,"Oregon State",11,"Western Kentucky",82,58,"Oregon State","region3","no",2018
-"288",3,"Tennessee",14,"Liberty",100,60,"Tennessee","region3","no",2018
-"289",7,"Michigan",10,"Northern Colorado",75,61,"Michigan","region3","no",2018
-"290",2,"Baylor",15,"Grambling",96,46,"Baylor","region3","no",2018
-"291",1,"Louisville",8,"Marquette",90,72,"Louisville","region3","no",2018
-"292",12,"Florida Gulf Coast",4,"Stanford",70,90,"Stanford","region3","no",2018
-"293",6,"Oregon State",3,"Tennessee",66,59,"Oregon State","region3","yes",2018
-"294",7,"Michigan",2,"Baylor",58,80,"Baylor","region3","no",2018
-"295",1,"Louisville",4,"Stanford",86,59,"Louisville","region3","no",2018
-"296",6,"Oregon State",2,"Baylor",72,67,"Oregon State","region3","yes",2018
-"297",1,"Louisville",6,"Oregon State",76,43,"Louisville","region3","no",2018
-"298",1,"Notre Dame",16,"Cal State Northridge",99,81,"Notre Dame","region4","no",2018
-"299",8,"South Dakota State",9,"Villanova",74,81,"Villanova","region4","yes",2018
-"300",5,"DePaul",12,"Oklahoma",90,79,"DePaul","region4","no",2018
-"301",4,"Texas A&M",13,"Drake",89,76,"Texas A&M","region4","no",2018
-"302",6,"LSU",11,"Central Michigan",69,78,"Central Michigan","region4","yes",2018
-"303",3,"Ohio State",14,"George Washington",87,45,"Ohio State","region4","no",2018
-"304",7,"Green Bay",10,"Minnesota",77,89,"Minnesota","region4","yes",2018
-"305",2,"Oregon",15,"Seattle",88,45,"Oregon","region4","no",2018
-"306",1,"Notre Dame",9,"Villanova",98,72,"Notre Dame","region4","no",2018
-"307",5,"DePaul",4,"Texas A&M",79,80,"Texas A&M","region4","no",2018
-"308",11,"Central Michigan",3,"Ohio State",95,78,"Central Michigan","region4","yes",2018
-"309",10,"Minnesota",2,"Oregon",73,101,"Oregon","region4","no",2018
-"310",1,"Notre Dame",4,"Texas A&M",90,84,"Notre Dame","region4","no",2018
-"311",11,"Central Michigan",2,"Oregon",69,83,"Oregon","region4","no",2018
-"312",1,"Notre Dame",2,"Oregon",84,74,"Notre Dame","region4","no",2018
-"313",1,"UConn",1,"Notre Dame",89,91,"Notre Dame","final four","no",2018
-"314",1,"Mississippi State",1,"Louisville",73,63,"Mississippi State","final four","no",2018
-"315",1,"Notre Dame",1,"Mississippi State",61,58,"Notre Dame","championship","no",2018
+"","seed1","team1","seed2","team2","score1","score2","winner","region","year"
+"1",1,"South Carolina",16,"Presbyterian",91,39,"South Carolina","region1",2024
+"2",8,"UNC",9,"Michigan State",59,56,"UNC","region1",2024
+"3",5,"Oklahoma",12,"Florida Gulf Coast",73,70,"Oklahoma","region1",2024
+"4",4,"Indiana",13,"Fairfield",89,56,"Indiana","region1",2024
+"5",6,"Nebraska",11,"Texas A&M",61,59,"Nebraska","region1",2024
+"6",3,"Oregon State",14,"Eastern Washington",73,51,"Oregon State","region1",2024
+"7",7,"Ole Miss",10,"Marquette",67,55,"Ole Miss","region1",2024
+"8",2,"Notre Dame",15,"Kent State",81,67,"Notre Dame","region1",2024
+"9",1,"South Carolina",8,"UNC",88,41,"South Carolina","region1",2024
+"10",5,"Oklahoma",4,"Indiana",68,75,"Indiana","region1",2024
+"11",6,"Nebraska",3,"Oregon State",51,61,"Oregon State","region1",2024
+"12",7,"Ole Miss",2,"Notre Dame",56,71,"Notre Dame","region1",2024
+"13",1,"South Carolina",4,"Indiana",79,75,"South Carolina","region1",2024
+"14",3,"Oregon State",2,"Notre Dame",70,65,"Oregon State","region1",2024
+"15",1,"South Carolina",3,"Oregon State",70,58,"South Carolina","region1",2024
+"16",1,"Iowa",16,"Holy Cross",91,65,"Iowa","region2",2024
+"17",8,"West Virginia",9,"Princeton",63,53,"West Virginia","region2",2024
+"18",5,"Colorado",12,"Drake",86,72,"Colorado","region2",2024
+"19",4,"Kansas State",13,"Portland",78,65,"Kansas State","region2",2024
+"20",6,"Louisville",11,"Middle Tennessee",69,71,"Middle Tennessee","region2",2024
+"21",3,"LSU",14,"Rice",70,60,"LSU","region2",2024
+"22",7,"Creighton",10,"UNLV",87,73,"Creighton","region2",2024
+"23",2,"UCLA",15,"California Baptist",84,55,"UCLA","region2",2024
+"24",1,"Iowa",8,"West Virginia",64,54,"Iowa","region2",2024
+"25",5,"Colorado",4,"Kansas State",63,50,"Colorado","region2",2024
+"26",11,"Middle Tennessee",3,"LSU",56,83,"LSU","region2",2024
+"27",7,"Creighton",2,"UCLA",63,67,"UCLA","region2",2024
+"28",1,"Iowa",5,"Colorado",89,68,"Iowa","region2",2024
+"29",3,"LSU",2,"UCLA",78,69,"LSU","region2",2024
+"30",1,"Iowa",3,"LSU",94,87,"Iowa","region2",2024
+"31",1,"USC",16,"Texas A&M-Corpus Christi",87,55,"USC","region3",2024
+"32",8,"Kansas",9,"Michigan",81,72,"Kansas","region3",2024
+"33",5,"Baylor",12,"Vanderbilt",80,63,"Baylor","region3",2024
+"34",4,"Virginia Tech",13,"Marshall",92,49,"Virginia Tech","region3",2024
+"35",6,"Syracuse",11,"Arizona",74,69,"Syracuse","region3",2024
+"36",3,"UConn",14,"Jackson State",86,64,"UConn","region3",2024
+"37",7,"Duke",10,"Richmond",72,61,"Duke","region3",2024
+"38",2,"Ohio State",15,"Maine",80,57,"Ohio State","region3",2024
+"39",1,"USC",8,"Kansas",73,55,"USC","region3",2024
+"40",5,"Baylor",4,"Virginia Tech",75,72,"Baylor","region3",2024
+"41",6,"Syracuse",3,"UConn",64,72,"UConn","region3",2024
+"42",7,"Duke",2,"Ohio State",75,63,"Duke","region3",2024
+"43",1,"USC",5,"Baylor",74,70,"USC","region3",2024
+"44",3,"UConn",7,"Duke",53,45,"UConn","region3",2024
+"45",1,"USC",3,"UConn",73,80,"UConn","region3",2024
+"46",1,"Texas",16,"Drexel",82,42,"Texas","region4",2024
+"47",8,"Alabama",9,"Florida State",82,74,"Alabama","region4",2024
+"48",5,"Utah",12,"South Dakota State",68,54,"Utah","region4",2024
+"49",4,"Gonzaga",13,"UC-Irvine",75,56,"Gonzaga","region4",2024
+"50",6,"Tennessee",11,"Green Bay",92,63,"Tennessee","region4",2024
+"51",3,"NC State",14,"Chattanooga",64,45,"NC State","region4",2024
+"52",7,"Iowa State",10,"Maryland",93,86,"Iowa State","region4",2024
+"53",2,"Stanford",15,"Norfolk State",79,50,"Stanford","region4",2024
+"54",1,"Texas",8,"Alabama",65,54,"Texas","region4",2024
+"55",5,"Utah",4,"Gonzaga",66,77,"Gonzaga","region4",2024
+"56",6,"Tennessee",3,"NC State",72,79,"NC State","region4",2024
+"57",7,"Iowa State",2,"Stanford",81,87,"Stanford","region4",2024
+"58",1,"Texas",4,"Gonzaga",69,47,"Texas","region4",2024
+"59",3,"NC State",2,"Stanford",77,67,"NC State","region4",2024
+"60",1,"Texas",3,"NC State",66,76,"NC State","region4",2024
+"61",1,"South Carolina",3,"NC State",78,59,"South Carolina","final four",2024
+"62",1,"Iowa",3,"UConn",71,69,"Iowa","final four",2024
+"63",1,"South Carolina",1,"Iowa",87,75,"South Carolina","championship",2024
+"64",1,"South Carolina",16,"Norfolk State",72,40,"South Carolina","region1",2023
+"65",8,"South Florida",9,"Marquette",67,65,"South Florida","region1",2023
+"66",5,"Oklahoma",12,"Portland",85,63,"Oklahoma","region1",2023
+"67",4,"UCLA",13,"Sacramento State",67,45,"UCLA","region1",2023
+"68",6,"Creighton",11,"Mississippi State",66,81,"Mississippi State","region1",2023
+"69",3,"Notre Dame",14,"Southern Utah",82,56,"Notre Dame","region1",2023
+"70",7,"Arizona",10,"West Virginia",75,62,"Arizona","region1",2023
+"71",2,"Maryland",15,"Holy Cross",93,61,"Maryland","region1",2023
+"72",1,"South Carolina",8,"South Florida",76,45,"South Carolina","region1",2023
+"73",5,"Oklahoma",4,"UCLA",73,82,"UCLA","region1",2023
+"74",11,"Mississippi State",3,"Notre Dame",48,53,"Notre Dame","region1",2023
+"75",7,"Arizona",2,"Maryland",64,77,"Maryland","region1",2023
+"76",1,"South Carolina",4,"UCLA",59,43,"South Carolina","region1",2023
+"77",3,"Notre Dame",2,"Maryland",59,76,"Maryland","region1",2023
+"78",1,"South Carolina",2,"Maryland",86,75,"South Carolina","region1",2023
+"79",1,"Indiana",16,"Tennessee Tech",77,47,"Indiana","region2",2023
+"80",8,"Oklahoma State",9,"Miami (FL)",61,62,"Miami (FL)","region2",2023
+"81",5,"Washington State",12,"Florida Gulf Coast",63,74,"Florida Gulf Coast","region2",2023
+"82",4,"Villanova",13,"Cleveland State",76,59,"Villanova","region2",2023
+"83",6,"Michigan",11,"UNLV",71,59,"Michigan","region2",2023
+"84",3,"LSU",14,"Hawaii",73,50,"LSU","region2",2023
+"85",7,"NC State",10,"Princeton",63,64,"Princeton","region2",2023
+"86",2,"Utah",15,"Gardner-Webb",103,77,"Utah","region2",2023
+"87",1,"Indiana",9,"Miami (FL)",68,70,"Miami (FL)","region2",2023
+"88",12,"Florida Gulf Coast",4,"Villanova",57,76,"Villanova","region2",2023
+"89",6,"Michigan",3,"LSU",42,66,"LSU","region2",2023
+"90",10,"Princeton",2,"Utah",56,63,"Utah","region2",2023
+"91",9,"Miami (FL)",4,"Villanova",70,65,"Miami (FL)","region2",2023
+"92",3,"LSU",2,"Utah",66,63,"LSU","region2",2023
+"93",9,"Miami (FL)",3,"LSU",42,54,"LSU","region2",2023
+"94",1,"Virginia Tech",16,"Chattanooga",58,33,"Virginia Tech","region3",2023
+"95",8,"USC",9,"South Dakota State",57,62,"South Dakota State","region3",2023
+"96",5,"Iowa State",12,"Toledo",73,80,"Toledo","region3",2023
+"97",4,"Tennessee",13,"Saint Louis",95,50,"Tennessee","region3",2023
+"98",6,"UNC",11,"St. John's (NY)",61,59,"UNC","region3",2023
+"99",3,"Ohio State",14,"James Madison",80,66,"Ohio State","region3",2023
+"100",7,"Baylor",10,"Alabama",78,74,"Baylor","region3",2023
+"101",2,"UConn",15,"Vermont",95,52,"UConn","region3",2023
+"102",1,"Virginia Tech",9,"South Dakota State",72,60,"Virginia Tech","region3",2023
+"103",12,"Toledo",4,"Tennessee",47,94,"Tennessee","region3",2023
+"104",6,"UNC",3,"Ohio State",69,71,"Ohio State","region3",2023
+"105",7,"Baylor",2,"UConn",58,77,"UConn","region3",2023
+"106",1,"Virginia Tech",4,"Tennessee",73,64,"Virginia Tech","region3",2023
+"107",3,"Ohio State",2,"UConn",73,61,"Ohio State","region3",2023
+"108",1,"Virginia Tech",3,"Ohio State",84,74,"Virginia Tech","region3",2023
+"109",1,"Stanford",16,"Sacred Heart",92,49,"Stanford","region4",2023
+"110",8,"Ole Miss",9,"Gonzaga",71,48,"Ole Miss","region4",2023
+"111",5,"Louisville",12,"Drake",83,81,"Louisville","region4",2023
+"112",4,"Texas",13,"East Carolina",79,40,"Texas","region4",2023
+"113",6,"Colorado",11,"Middle Tennessee",82,60,"Colorado","region4",2023
+"114",3,"Duke",14,"Iona",89,49,"Duke","region4",2023
+"115",7,"Florida State",10,"Georgia",54,66,"Georgia","region4",2023
+"116",2,"Iowa",15,"Southeastern Louisiana",95,43,"Iowa","region4",2023
+"117",1,"Stanford",8,"Ole Miss",49,54,"Ole Miss","region4",2023
+"118",5,"Louisville",4,"Texas",73,51,"Louisville","region4",2023
+"119",6,"Colorado",3,"Duke",61,53,"Colorado","region4",2023
+"120",10,"Georgia",2,"Iowa",66,74,"Iowa","region4",2023
+"121",8,"Ole Miss",5,"Louisville",62,72,"Louisville","region4",2023
+"122",6,"Colorado",2,"Iowa",77,87,"Iowa","region4",2023
+"123",5,"Louisville",2,"Iowa",83,97,"Iowa","region4",2023
+"124",1,"Virginia Tech",3,"LSU",72,79,"LSU","final four",2023
+"125",1,"South Carolina",2,"Iowa",73,77,"Iowa","final four",2023
+"126",3,"LSU",2,"Iowa",102,85,"LSU","championship",2023
+"127",1,"NC State",16,"Longwood",96,68,"NC State","region1",2022
+"128",8,"Washington State",9,"Kansas State",40,50,"Kansas State","region1",2022
+"129",5,"Notre Dame",12,"UMass",89,78,"Notre Dame","region1",2022
+"130",4,"Oklahoma",13,"IU Indianapolis",78,72,"Oklahoma","region1",2022
+"131",6,"Kentucky",11,"Princeton",62,69,"Princeton","region1",2022
+"132",3,"Indiana",14,"Charlotte",85,51,"Indiana","region1",2022
+"133",7,"UCF",10,"Florida",69,52,"UCF","region1",2022
+"134",2,"UConn",15,"Mercer",83,38,"UConn","region1",2022
+"135",1,"NC State",9,"Kansas State",89,57,"NC State","region1",2022
+"136",5,"Notre Dame",4,"Oklahoma",108,64,"Notre Dame","region1",2022
+"137",11,"Princeton",3,"Indiana",55,56,"Indiana","region1",2022
+"138",7,"UCF",2,"UConn",47,52,"UConn","region1",2022
+"139",1,"NC State",5,"Notre Dame",66,63,"NC State","region1",2022
+"140",3,"Indiana",14,"Charlotte",85,51,"Indiana","region1",2022
+"141",1,"NC State",2,"UConn",87,91,"UConn","region1",2022
+"142",1,"South Carolina",16,"Howard",79,21,"South Carolina","region2",2022
+"143",8,"Miami (FL)",9,"South Florida",78,66,"Miami (FL)","region2",2022
+"144",5,"UNC",12,"Stephen F. Austin",79,66,"UNC","region2",2022
+"145",4,"Arizona",13,"UNLV",72,67,"Arizona","region2",2022
+"146",6,"Georgia",11,"Dayton",70,54,"Georgia","region2",2022
+"147",3,"Iowa State",14,"UT Arlington",78,71,"Iowa State","region2",2022
+"148",7,"Colorado",10,"Creighton",74,84,"Creighton","region2",2022
+"149",2,"Iowa",15,"Illinois State",98,58,"Iowa","region2",2022
+"150",1,"South Carolina",8,"Miami (FL)",49,33,"South Carolina","region2",2022
+"151",5,"UNC",4,"Arizona",63,45,"UNC","region2",2022
+"152",6,"Georgia",3,"Iowa State",44,67,"Iowa State","region2",2022
+"153",10,"Creighton",2,"Iowa",64,62,"Creighton","region2",2022
+"154",1,"South Carolina",5,"UNC",69,61,"South Carolina","region2",2022
+"155",3,"Iowa State",10,"Creighton",68,76,"Creighton","region2",2022
+"156",1,"South Carolina",10,"Creighton",80,50,"South Carolina","region2",2022
+"157",1,"Stanford",16,"Montana State",78,37,"Stanford","region3",2022
+"158",8,"Kansas",9,"Georgia Tech",77,58,"Kansas","region3",2022
+"159",5,"Virginia Tech",12,"Florida Gulf Coast",81,84,"Florida Gulf Coast","region3",2022
+"160",4,"Maryland",13,"Delaware",102,71,"Maryland","region3",2022
+"161",6,"Ohio State",11,"Missouri State",63,56,"Ohio State","region3",2022
+"162",3,"LSU",14,"Jackson State",83,77,"LSU","region3",2022
+"163",7,"Utah",10,"Arkansas",92,69,"Utah","region3",2022
+"164",2,"Texas",15,"Fairfield",70,52,"Texas","region3",2022
+"165",1,"Stanford",8,"Kansas",91,65,"Stanford","region3",2022
+"166",12,"Florida Gulf Coast",4,"Maryland",65,89,"Maryland","region3",2022
+"167",6,"Ohio State",3,"LSU",79,64,"Ohio State","region3",2022
+"168",7,"Utah",2,"Texas",56,78,"Texas","region3",2022
+"169",1,"Stanford",4,"Maryland",72,66,"Stanford","region3",2022
+"170",6,"Ohio State",2,"Texas",63,66,"Texas","region3",2022
+"171",1,"Stanford",2,"Texas",59,50,"Stanford","region3",2022
+"172",1,"Louisville",16,"Albany (NY)",83,51,"Louisville","region4",2022
+"173",8,"Nebraska",9,"Gonzaga",55,68,"Gonzaga","region4",2022
+"174",5,"Oregon",12,"Belmont",70,73,"Belmont","region4",2022
+"175",4,"Tennessee",13,"Buffalo",80,67,"Tennessee","region4",2022
+"176",6,"BYU",11,"Villanova",57,61,"Villanova","region4",2022
+"177",3,"Michigan",14,"American",74,39,"Michigan","region4",2022
+"178",7,"Ole Miss",10,"South Dakota",61,75,"South Dakota","region4",2022
+"179",2,"Baylor",15,"Hawaii",89,49,"Baylor","region4",2022
+"180",1,"Louisville",9,"Gonzaga",68,59,"Louisville","region4",2022
+"181",12,"Belmont",4,"Tennessee",67,70,"Tennessee","region4",2022
+"182",11,"Villanova",3,"Michigan",49,64,"Michigan","region4",2022
+"183",10,"South Dakota",2,"Baylor",61,47,"South Dakota","region4",2022
+"184",1,"Louisville",4,"Tennessee",76,64,"Louisville","region4",2022
+"185",3,"Michigan",10,"South Dakota",52,49,"Michigan","region4",2022
+"186",1,"Louisville",3,"Michigan",62,50,"Louisville","region4",2022
+"187",1,"South Carolina",1,"Louisville",72,59,"South Carolina","final four",2022
+"188",1,"Stanford",2,"UConn",58,63,"UConn","final four",2022
+"189",1,"South Carolina",2,"UConn",64,49,"South Carolina","championship",2022
+"190",1,"Louisville",16,"Robert Morris",69,34,"Louisville","region1",2019
+"191",8,"Michigan",9,"Kansas State",84,54,"Michigan","region1",2019
+"192",5,"Gonzaga",12,"Little Rock",68,51,"Gonzaga","region1",2019
+"193",4,"Oregon State",13,"Boise State",80,75,"Oregon State","region1",2019
+"194",6,"UCLA",11,"Tennessee",89,77,"UCLA","region1",2019
+"195",3,"Maryland",14,"Radford",73,51,"Maryland","region1",2019
+"196",7,"Rutgers",10,"Buffalo",71,82,"Buffalo","region1",2019
+"197",2,"UConn",15,"Towson",110,61,"UConn","region1",2019
+"198",1,"Louisville",8,"Michigan",71,50,"Louisville","region1",2019
+"199",5,"Gonzaga",4,"Oregon State",70,76,"Oregon State","region1",2019
+"200",6,"UCLA",3,"Maryland",85,80,"UCLA","region1",2019
+"201",10,"Buffalo",2,"UConn",72,84,"UConn","region1",2019
+"202",1,"Louisville",4,"Oregon State",61,44,"Louisville","region1",2019
+"203",6,"UCLA",2,"UConn",61,69,"UConn","region1",2019
+"204",1,"Louisville",2,"UConn",73,80,"UConn","region1",2019
+"205",1,"Notre Dame",16,"Bethune-Cookman",92,50,"Notre Dame","region2",2019
+"206",8,"Central Michigan",9,"Michigan State",87,88,"Michigan State","region2",2019
+"207",5,"Marquette",12,"Rice",58,54,"Marquette","region2",2019
+"208",4,"Texas A&M",13,"Wright State",84,61,"Texas A&M","region2",2019
+"209",6,"DePaul",11,"Missouri State",78,89,"Missouri State","region2",2019
+"210",3,"Iowa State",14,"New Mexico State",97,61,"Iowa State","region2",2019
+"211",7,"BYU",10,"Auburn",73,64,"BYU","region2",2019
+"212",2,"Stanford",15,"UC-Davis",79,54,"Stanford","region2",2019
+"213",1,"Notre Dame",9,"Michigan State",91,63,"Notre Dame","region2",2019
+"214",5,"Marquette",4,"Texas A&M",76,78,"Texas A&M","region2",2019
+"215",11,"Missouri State",3,"Iowa State",69,60,"Missouri State","region2",2019
+"216",7,"BYU",2,"Stanford",63,72,"Stanford","region2",2019
+"217",1,"Notre Dame",4,"Texas A&M",87,80,"Notre Dame","region2",2019
+"218",11,"Missouri State",2,"Stanford",46,55,"Stanford","region2",2019
+"219",1,"Notre Dame",2,"Stanford",84,68,"Notre Dame","region2",2019
+"220",1,"Baylor",16,"Abilene Christian",95,38,"Baylor","region3",2019
+"221",8,"California",9,"UNC",92,72,"California","region3",2019
+"222",5,"Florida State",12,"Bucknell",70,67,"Florida State","region3",2019
+"223",4,"South Carolina",13,"Belmont",74,52,"South Carolina","region3",2019
+"224",6,"Kentucky",11,"Princeton",82,77,"Kentucky","region3",2019
+"225",3,"NC State",14,"Maine",63,51,"NC State","region3",2019
+"226",7,"Missouri",10,"Drake",77,76,"Missouri","region3",2019
+"227",2,"Iowa",15,"Mercer",66,61,"Iowa","region3",2019
+"228",1,"Baylor",8,"California",102,63,"Baylor","region3",2019
+"229",5,"Florida State",4,"South Carolina",64,72,"South Carolina","region3",2019
+"230",6,"Kentucky",3,"NC State",57,72,"NC State","region3",2019
+"231",7,"Missouri",2,"Iowa",52,68,"Iowa","region3",2019
+"232",1,"Baylor",4,"South Carolina",93,68,"Baylor","region3",2019
+"233",3,"NC State",2,"Iowa",61,79,"Iowa","region3",2019
+"234",1,"Baylor",2,"Iowa",85,53,"Baylor","region3",2019
+"235",1,"Mississippi State",16,"Southern",103,46,"Mississippi State","region4",2019
+"236",8,"South Dakota",9,"Clemson",66,79,"Clemson","region4",2019
+"237",5,"Arizona State",12,"UCF",60,45,"Arizona State","region4",2019
+"238",4,"Miami (FL)",13,"Florida Gulf Coast",69,62,"Miami (FL)","region4",2019
+"239",6,"South Dakota State",11,"Quinnipiac",76,65,"South Dakota State","region4",2019
+"240",3,"Syracuse",14,"Fordham",70,49,"Syracuse","region4",2019
+"241",7,"Texas",10,"Indiana",65,69,"Indiana","region4",2019
+"242",2,"Oregon",15,"Portland State",78,40,"Oregon","region4",2019
+"243",1,"Mississippi State",9,"Clemson",85,61,"Mississippi State","region4",2019
+"244",5,"Arizona State",4,"Miami (FL)",57,55,"Arizona State","region4",2019
+"245",6,"South Dakota State",3,"Syracuse",75,64,"South Dakota State","region4",2019
+"246",10,"Indiana",2,"Oregon",68,91,"Oregon","region4",2019
+"247",1,"Mississippi State",5,"Arizona State",76,53,"Mississippi State","region4",2019
+"248",6,"South Dakota State",2,"Oregon",53,63,"Oregon","region4",2019
+"249",1,"Mississippi State",2,"Oregon",84,88,"Oregon","region4",2019
+"250",1,"Baylor",2,"Oregon",72,67,"Baylor","final four",2019
+"251",1,"Notre Dame",2,"UConn",81,76,"Notre Dame","final four",2019
+"252",1,"Baylor",1,"Notre Dame",82,81,"Baylor","championship",2019
+"253",1,"UConn",16,"Saint Francis (PA)",140,52,"UConn","region1",2018
+"254",8,"Miami (FL)",9,"Quinnipiac",72,86,"Quinnipiac","region1",2018
+"255",5,"Duke",12,"Belmont",72,58,"Duke","region1",2018
+"256",4,"Georgia",13,"Mercer",68,63,"Georgia","region1",2018
+"257",6,"South Florida",11,"Buffalo",79,102,"Buffalo","region1",2018
+"258",3,"Florida State",14,"Little Rock",91,49,"Florida State","region1",2018
+"259",7,"California",10,"Virginia",62,68,"Virginia","region1",2018
+"260",2,"South Carolina",15,"North Carolina A&T",63,52,"South Carolina","region1",2018
+"261",1,"UConn",9,"Quinnipiac",71,46,"UConn","region1",2018
+"262",5,"Duke",4,"Georgia",66,40,"Duke","region1",2018
+"263",11,"Buffalo",3,"Florida State",86,65,"Buffalo","region1",2018
+"264",10,"Virginia",2,"South Carolina",56,66,"South Carolina","region1",2018
+"265",1,"UConn",5,"Duke",72,59,"UConn","region1",2018
+"266",11,"Buffalo",2,"South Carolina",63,79,"South Carolina","region1",2018
+"267",1,"UConn",2,"South Carolina",94,65,"UConn","region1",2018
+"268",1,"Mississippi State",16,"Nicholls State",95,50,"Mississippi State","region2",2018
+"269",8,"Syracuse",9,"Oklahoma State",57,84,"Oklahoma State","region2",2018
+"270",5,"Maryland",12,"Princeton",77,57,"Maryland","region2",2018
+"271",4,"NC State",13,"Elon",62,35,"NC State","region2",2018
+"272",6,"Iowa",11,"Creighton",70,76,"Creighton","region2",2018
+"273",3,"UCLA",14,"American",71,60,"UCLA","region2",2018
+"274",7,"Arizona State",10,"Nebraska",73,62,"Arizona State","region2",2018
+"275",2,"Texas",15,"Maine",83,54,"Texas","region2",2018
+"276",1,"Mississippi State",9,"Oklahoma State",71,56,"Mississippi State","region2",2018
+"277",5,"Maryland",4,"NC State",60,74,"NC State","region2",2018
+"278",11,"Creighton",3,"UCLA",64,86,"UCLA","region2",2018
+"279",7,"Arizona State",2,"Texas",65,85,"Texas","region2",2018
+"280",1,"Mississippi State",4,"NC State",71,57,"Mississippi State","region2",2018
+"281",3,"UCLA",2,"Texas",84,75,"UCLA","region2",2018
+"282",1,"Mississippi State",3,"UCLA",89,73,"Mississippi State","region2",2018
+"283",1,"Louisville",16,"Boise State",74,42,"Louisville","region3",2018
+"284",8,"Marquette",9,"Dayton",84,65,"Marquette","region3",2018
+"285",5,"Missouri",12,"Florida Gulf Coast",70,80,"Florida Gulf Coast","region3",2018
+"286",4,"Stanford",13,"Gonzaga",82,68,"Stanford","region3",2018
+"287",6,"Oregon State",11,"Western Kentucky",82,58,"Oregon State","region3",2018
+"288",3,"Tennessee",14,"Liberty",100,60,"Tennessee","region3",2018
+"289",7,"Michigan",10,"Northern Colorado",75,61,"Michigan","region3",2018
+"290",2,"Baylor",15,"Grambling",96,46,"Baylor","region3",2018
+"291",1,"Louisville",8,"Marquette",90,72,"Louisville","region3",2018
+"292",12,"Florida Gulf Coast",4,"Stanford",70,90,"Stanford","region3",2018
+"293",6,"Oregon State",3,"Tennessee",66,59,"Oregon State","region3",2018
+"294",7,"Michigan",2,"Baylor",58,80,"Baylor","region3",2018
+"295",1,"Louisville",4,"Stanford",86,59,"Louisville","region3",2018
+"296",6,"Oregon State",2,"Baylor",72,67,"Oregon State","region3",2018
+"297",1,"Louisville",6,"Oregon State",76,43,"Louisville","region3",2018
+"298",1,"Notre Dame",16,"Cal State Northridge",99,81,"Notre Dame","region4",2018
+"299",8,"South Dakota State",9,"Villanova",74,81,"Villanova","region4",2018
+"300",5,"DePaul",12,"Oklahoma",90,79,"DePaul","region4",2018
+"301",4,"Texas A&M",13,"Drake",89,76,"Texas A&M","region4",2018
+"302",6,"LSU",11,"Central Michigan",69,78,"Central Michigan","region4",2018
+"303",3,"Ohio State",14,"George Washington",87,45,"Ohio State","region4",2018
+"304",7,"Green Bay",10,"Minnesota",77,89,"Minnesota","region4",2018
+"305",2,"Oregon",15,"Seattle",88,45,"Oregon","region4",2018
+"306",1,"Notre Dame",9,"Villanova",98,72,"Notre Dame","region4",2018
+"307",5,"DePaul",4,"Texas A&M",79,80,"Texas A&M","region4",2018
+"308",11,"Central Michigan",3,"Ohio State",95,78,"Central Michigan","region4",2018
+"309",10,"Minnesota",2,"Oregon",73,101,"Oregon","region4",2018
+"310",1,"Notre Dame",4,"Texas A&M",90,84,"Notre Dame","region4",2018
+"311",11,"Central Michigan",2,"Oregon",69,83,"Oregon","region4",2018
+"312",1,"Notre Dame",2,"Oregon",84,74,"Notre Dame","region4",2018
+"313",1,"UConn",1,"Notre Dame",89,91,"Notre Dame","final four",2018
+"314",1,"Mississippi State",1,"Louisville",73,63,"Mississippi State","final four",2018
+"315",1,"Notre Dame",1,"Mississippi State",61,58,"Notre Dame","championship",2018
