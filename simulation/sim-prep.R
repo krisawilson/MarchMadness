@@ -43,7 +43,8 @@ full <- full_dat |>
   mutate(region = case_when(row_number() <= 16 ~ "SPOKANE1",
                             row_number() <= 32 ~ "BIRMINGHAM1",
                             row_number() <= 48 ~ "SPOKANE4",
-                            row_number() <= 64 ~ "BIRMINGHAM3"))
+                            row_number() <= 64 ~ "BIRMINGHAM3")) |> 
+  distinct(team, region, .keep_all = TRUE)
 
 rm(full_dat)
 
@@ -51,7 +52,7 @@ rm(full_dat)
 dat_for_sim <- pairwise_differences(df = full)
 
 # add region column
-dat_for_sim <- dat_for_sim |>
+dat_for_sim_2 <- dat_for_sim |>
   left_join(full |> 
               select(region, team) |> 
               rename(region1 = region, team1 = team), 
@@ -65,5 +66,5 @@ dat_for_sim <- dat_for_sim |>
   relocate(c("region1", "region2"), .before = PPG_diff)
 
 # write data!
-readr::write_csv(dat_for_sim, "simulation/input-data.csv")
+readr::write_csv(dat_for_sim_2, "simulation/input-data-2.csv")
 
