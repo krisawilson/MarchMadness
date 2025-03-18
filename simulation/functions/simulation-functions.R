@@ -60,8 +60,10 @@ pairwise_differences <- function(df) {
     result_row <- data.frame(
       team1 = df$team[r1],
       seed1 = df$seed[r1],
+      region1 = df$region[r1],
       team2 = df$team[r2],
       seed2 = df$seed[r2],
+      region2 = df$region[r2],
       t(diff_vec), # transpose so that stats become columns
       row.names = NULL,
       stringsAsFactors = FALSE

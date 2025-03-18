@@ -37,34 +37,40 @@ rm(url1, u25, rat25, ratings25, p25, bracket25, team_stats)
 
 # give the first four teams the minimum of the other stats
 full <- full_dat |> 
-  mutate(across(3:length(full_dat), 
-                ~ifelse(is.na(.), min(., na.rm = TRUE), .))) |> 
+  mutate(across(3:ncol(full_dat), ~{
+    # Compute mean and standard deviation, ignoring NAs.
+    m <- mean(., na.rm = TRUE)
+    s <- sd(., na.rm = TRUE)
+    x <- .
+    missing <- is.na(x) # Identify NA positions.
+    # Replace NAs with random draws from a normal distribution 
+    # with mean m and sd s.
+    x[missing] <- rnorm(sum(missing), mean = m, sd = s)
+    x
+  })) |> 
   select(-year) |> 
   mutate(region = case_when(row_number() <= 16 ~ "SPOKANE1",
                             row_number() <= 32 ~ "BIRMINGHAM1",
-                            row_number() <= 48 ~ "SPOKANE4",
-                            row_number() <= 64 ~ "BIRMINGHAM3")) |> 
-  distinct(team, region, .keep_all = TRUE)
+                            row_number() <= 48 ~ "SPOKANE2",
+                            row_number() <= 64 ~ "BIRMINGHAM2"))
+library(dplyr)
+
+full <- full |>
+  group_by(region, team) |>
+  mutate(seed = if_else(region == "BIRMINGHAM1" & 
+                          team == "First Four" & 
+                          row_number() == 1, 11, seed)) |>
+  ungroup() |> group_by(region, team) |>
+  mutate(seed = if_else(region == "BIRMINGHAM2" & 
+                          team == "First Four" & 
+                          row_number() == 2, 11, seed)) |>
+  ungroup()
 
 rm(full_dat)
 
 # get all pairwise comparisons
 dat_for_sim <- pairwise_differences(df = full)
 
-# add region column
-dat_for_sim_2 <- dat_for_sim |>
-  left_join(full |> 
-              select(region, team) |> 
-              rename(region1 = region, team1 = team), 
-            by = "team1",
-            relationship = "many-to-many") |>
-  left_join(full |> 
-              select(region, team) |> 
-              rename(region2 = region, team2 = team), 
-            by = "team2",
-            relationship = "many-to-many") |> 
-  relocate(c("region1", "region2"), .before = PPG_diff)
-
 # write data!
-readr::write_csv(dat_for_sim_2, "simulation/input-data-2.csv")
+readr::write_csv(dat_for_sim, "simulation/input-data.csv")
 

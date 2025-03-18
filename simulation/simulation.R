@@ -1,7 +1,7 @@
 # load stuff
 library(tidyverse)
 library(ranger)
-dat <- read_csv("simulation/input-data-2.csv")
+dat <- read_csv("simulation/input-data.csv")
 load("modeling/models.RData")
 
 simulate_game <- function(teamA, teamB, data, model = "ensemble") {
@@ -18,8 +18,7 @@ simulate_game <- function(teamA, teamB, data, model = "ensemble") {
              (team1 == teamB & team2 == teamA))
   
   print(paste("Simulating game:", teamA, "vs", teamB))
-  print(matchup_row)
-  
+
   if(nrow(matchup_row) == 0) {
     stop("No matchup found for: ", teamA, " vs ", teamB)
   }
@@ -88,7 +87,7 @@ simulate_region <- function(region1, region2, data, model) {
   }
   
   # filter the data for matchups within this region.
-  reg_data <- data |> filter(region1 == region1, region2 == region1)
+  reg_data <- data |> filter(region1 == region1, region2 == region2)
   
   # reconstruct the team list for this region from the matchup data.
   # we'll extract all teams that appear as team1 and team2 (in region1).
@@ -168,7 +167,10 @@ simulate_tournament <- function(data, model, n_sim = 10000) {
 }
 
 tourney_results <- simulate_tournament(data = dat, 
-                                       model = "rf", n_sim = 10000)
+                                       model = "logit_model", n_sim = 10000)
 champ_freq <- table(tourney_results)
 champ_prob <- prop.table(champ_freq)
 print(champ_prob)
+
+dat <- dat |> distinct()
+region_list <- split(dat, dat$region1, dat$region2)
