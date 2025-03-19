@@ -53,3 +53,7 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# ignore results
+/simulation/bracket-probs.md
+/simulation/results.RData
