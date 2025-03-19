@@ -2,7 +2,7 @@
 library(tidyverse)
 
 # need the -1 bc created data with write.csv
-full_data <- read_csv("data/full-data.csv") |> select(-1)
+full_data <- read_csv("data/women/full-data.csv") |> select(-1)
 
 # let's get cooking ----
 # first, grab relevant features
@@ -28,14 +28,7 @@ trim_dat <- full_data |>
   # keep differenced columns now
   select(c(1:9, team1_win, contains("diff")))
 
-# standardize covariates
-#std_dat <- trim_dat |> 
-#  mutate(across(c(MOV_game, contains("diff")),
-#                ~ (. - mean(., na.rm = TRUE)) / sd(., na.rm = TRUE),
-#                .names = "std_{.col}")) |> 
-#  select(c(1:10, contains("std")))
 rm(full_data)
 
 # done here!
-write_csv(trim_dat, "data/clean-data.csv")
-#write_csv(std_dat, "data/standardized-data.csv")
+write_csv(trim_dat, "data/women/clean-data.csv")

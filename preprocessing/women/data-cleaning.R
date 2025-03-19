@@ -1,5 +1,5 @@
 # grab functions
-source("preprocessing/functions/data-cleaning-functions.R")
+source("preprocessing/women/functions/data-cleaning-functions.R")
 
 # grab bracket data ----
 # 2024
@@ -96,6 +96,6 @@ full_dat <- full_dat |>
                       grep("_team1$", names(full_dat), 
                            value = TRUE))))
 # write CSVs!
-write.csv(brackets, "data/brackets.csv")
-write.csv(team_stats, "data/team-stats.csv")
-write.csv(full_dat, "data/full-data.csv")
+write.csv(brackets, "data/women/brackets.csv")
+write.csv(team_stats, "data/women/team-stats.csv")
+write.csv(full_dat, "data/women/full-data.csv")

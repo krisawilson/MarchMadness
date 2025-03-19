@@ -9,7 +9,7 @@ library(pROC)
 #libary(vip)
 
 # data prep ----
-clean_data <- read_csv("data/clean-data.csv")
+clean_data <- read_csv("data/women/clean-data.csv")
 # get just raw data
 dat <- clean_data |> select(team1_win:length(clean_data))
 # split into training and test! ----
@@ -134,4 +134,4 @@ auc(roc_xgb)
 # takeaway: probably mix the random forest and logistic regression models
 
 # save models!
-save(logit_model, rf_mod, file = "modeling/models.RData")
+save(logit_model, rf_mod, file = "modeling/women/models.RData")

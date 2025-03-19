@@ -3,15 +3,15 @@
 # OTHERWISE THE NCAA BRACKET WILL CHANGE
 ##################################################
 
-source("preprocessing/functions/data-cleaning-functions.R")
-source("simulation/functions/simulation-functions.R")
+source("preprocessing/men/functions/data-cleaning-functions.R")
+source("simulation/men/functions/simulation-functions.R")
 
 # get ratings/stats data:
-rat25 <- "https://www.sports-reference.com/cbb/seasons/women/2025-ratings.html"
-ratings25 <- scrape_adv_stats_wbb(url = rat25, year = 2025)
+rat25 <- "https://www.sports-reference.com/cbb/seasons/men/2025-ratings.html"
+ratings25 <- scrape_adv_stats_mbb(url = rat25, year = 2025)
 # get pace:
-u25 <- "https://www.sports-reference.com/cbb/seasons/women/2024-advanced-school-stats.html"
-p25 <- scrape_pace_wbb(url = u25, year = 2025)
+u25 <- "https://www.sports-reference.com/cbb/seasons/men/2024-advanced-school-stats.html"
+p25 <- scrape_pace_mbb(url = u25, year = 2025)
 # join!
 team_stats <- inner_join(ratings25, p25, by = c("School", "year"))
 # small cleanup
@@ -20,14 +20,14 @@ team_stats <- team_stats |>
   relocate(Pace, .before = MOV) |> 
   select(-c(Rk, "AP Rank", Conf, W, L)) |> 
   # consistent team names
-  mutate(School = team_names_wbb(School))
+  mutate(School = team_names_mbb(School))
 
 # grab bracket from NCAA
-url1 <- "https://www.ncaa.com/brackets/basketball-women/d1/2025"
+url1 <- "https://www.ncaa.com/brackets/basketball-men/d1/2025"
 bracket25 <- scrape_bracket_ncaaw(url = url1)
 
 # fix team names again--thanks NCAA
-bracket25 <- bracket25 |> mutate(team = team_names_wbb(team))
+bracket25 <- bracket25 |> mutate(team = team_names_mbb(team))
 
 # join all data!
 full_dat <- left_join(bracket25, team_stats,
@@ -72,5 +72,5 @@ rm(full_dat)
 dat_for_sim <- pairwise_differences(df = full)
 
 # write data!
-readr::write_csv(dat_for_sim, "simulation/input-data.csv")
+readr::write_csv(dat_for_sim, "simulation/men/input-data.csv")
 
