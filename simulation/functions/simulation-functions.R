@@ -80,7 +80,7 @@ simulate_game <- function(team1, team2, model, region_data) {
   }
 }
 
-simulate_block <- function(bracket, model, region_data) {
+simulate_block <- function(bracket, model, region_data, verbose = FALSE) {
   packages <- c("tidyverse", "ranger") # grab packages
   for (pkg in packages) {
     if (!pkg %in% .packages()) {
@@ -140,10 +140,14 @@ simulate_block <- function(bracket, model, region_data) {
   # block winners
   block_winner <- simulate_game(game1_winner, game2_winner, 
                                 model, region_data)
+  # (optional) output winner
+  if(verbose){
+    cat("Block winner:", block_winner, "\n")
+  }
   return(block_winner)
 }
 
-simulate_region <- function(region_data, model) {
+simulate_region <- function(region_data, model, verbose = FALSE) {
   packages <- c("tidyverse", "ranger") # grab packages
   for (pkg in packages) {
     if (!pkg %in% .packages()) {
@@ -174,6 +178,11 @@ simulate_region <- function(region_data, model) {
   # region winner aka elite 8
   region_winner <- simulate_game(semi1_winner, semi2_winner, 
                                  model, region_data)
+  
+  # (optional) output winner
+  if(verbose){
+    cat("Region winner:", region_winner, "\n")
+  }
   return(region_winner)
 }
 
