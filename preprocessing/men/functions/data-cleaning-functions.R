@@ -94,8 +94,8 @@ scrape_bracket_mbb <- function(url, year) {
     if (length(team_nodes) < 2) next # error handling
     
     # extract info for each team using extract_team_info
-    team1_info <- extract_team_info_wbb(team_nodes[1])
-    team2_info <- extract_team_info_wbb(team_nodes[2])
+    team1_info <- extract_team_info_mbb(team_nodes[1])
+    team2_info <- extract_team_info_mbb(team_nodes[2])
     
     # in the HTML, the winning team is indicated by having a class     
     # "winner" on its team block. thanks sports reference!
@@ -207,7 +207,7 @@ scrape_pace_mbb <- function(url, year) {
   #####
   # This function takes in two inputs, a string url, and a year.
   # Very similar to the above function, this function extracts
-  # the pace column from sports reference's wbb advanced stats
+  # the pace column from sports reference's mbb advanced stats
   
   ## inputs ##
   # url (string): a string with the url/link to the webpage
@@ -275,6 +275,8 @@ team_names_mbb <- function(col) {
     col == "UC Irvine" ~ "UC-Irvine",
     col == "UC Davis" ~ "UC-Davis",
     col == "IU Indy" ~ "IU Indianapolis",
+    col == "UC San Diego" ~ "UC-San Diego",
+    col == "SIU Edwardsville" ~ "SIU-Edwardsville",
     
     # from NCAA bracket
     col == "Ball St." ~ "Ball State",
@@ -294,7 +296,16 @@ team_names_mbb <- function(col) {
     col == "Ohio St." ~ "Ohio State",
     col == "Montana St." ~ "Montana State",
     col == "SFA" ~ "Stephen F. Austin",
-    TRUE ~ col  
+    
+    # for men... once I change to Sports Refernce, this won't be an
+    # issue anymore
+    col == "Virginia Commonwealth" ~ "VCU",
+    col == "Saint Mary's (CA)" ~ "Saint Mary's",
+    col == "UC Santa Barbara" ~ "UCSB",
+    col == "Saint Peter's" ~ "St. Peter's",
+    col == "Pittsburgh" ~ "Pitt",
+    col == "Pennsylvania" ~ "Penn",
+    TRUE ~ col
   )
 }
 
@@ -442,4 +453,97 @@ pairwise_differences <- function(df) {
   # combine all rows into one data frame
   pairwise_df <- do.call(rbind, results_list)
   return(pairwise_df)
+}
+
+extract_team_info_mbb_empty <- function(team_node) {
+  #####
+  # This function takes an HTML node representing
+  # a team in an unplayed tournament game and returns
+  # a list containing the seed and team name.
+  #####
+  
+  # ensure rvest is loaded
+  if (!"rvest" %in% .packages()) {
+    library(rvest)
+  }
+  
+  # Extract the seed (first <span>). If seed is not numeric (e.g., "tbd"), as.numeric() returns NA.
+  seed_text <- team_node %>% html_node("span") %>% html_text(trim = TRUE)
+  seed <- suppressWarnings(as.numeric(seed_text))
+  
+  # Extract team name from the first <a> tag
+  team_name <- team_node %>% html_node("a") %>% html_text(trim = TRUE)
+  
+  list(
+    seed = seed,
+    team = team_name
+  )
+}
+
+scrape_bracket_mbb_empty <- function(url, year) {
+  #####
+  # This function scrapes the NCAA tournament bracket for a given year.
+  # For tournaments that haven't begun, no game scores or winners exist.
+  #####
+  
+  # Load required packages if not already loaded
+  packages <- c("dplyr", "rvest")
+  for (pkg in packages) {
+    if (!pkg %in% .packages()) {
+      library(pkg, character.only = TRUE)
+    }
+  }
+  
+  # Ensure valid year
+  if (year < 2009) {
+    stop("Year must be 2010 or later.")
+  }
+  
+  # Read the HTML page from the URL
+  page <- read_html(url)
+  
+  # Each game is a child of a <div class="round">
+  game_nodes <- page %>% html_nodes("div.round > div")
+  
+  games_list <- list()  # initialize list to store results
+  
+  # Loop over each game node
+  for (i in seq_along(game_nodes)) {
+    game <- game_nodes[i]
+    
+    # Each game has two team nodes
+    team_nodes <- game %>% html_nodes(xpath = "./div")
+    if (length(team_nodes) < 2) next  # skip if not enough info
+    
+    # Extract team information (seed and team name) for each team
+    team1_info <- extract_team_info_mbb_empty(team_nodes[1])
+    team2_info <- extract_team_info_mbb_empty(team_nodes[2])
+    
+    # Create a data frame row for this game (no score or winner info)
+    game_df <- data.frame(
+      seed1 = team1_info$seed, team1 = team1_info$team,
+      seed2 = team2_info$seed, team2 = team2_info$team,
+      stringsAsFactors = FALSE
+    )
+    games_list[[length(games_list) + 1]] <- game_df
+  }
+  
+  # Combine all games into one data frame
+  result_df <- bind_rows(games_list)
+  
+  # Add region and year columns. Adjust region mapping if needed.
+  final_df <- result_df %>%
+    mutate(
+      region = case_when(
+        row_number() <= 15 ~ "east",  # regional rounds
+        row_number() > 15 & row_number() <= 30 ~ "midwest", 
+        row_number() > 30 & row_number() <= 45 ~ "south", 
+        row_number() > 45 & row_number() <= 60 ~ "west", 
+        row_number() > 60 & row_number() <= 62 ~ "final four", 
+        row_number() == 63 ~ "championship"
+      ),
+      year = year
+    )
+  
+  return(final_df)
 }

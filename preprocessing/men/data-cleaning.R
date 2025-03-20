@@ -95,7 +95,28 @@ full_dat <- full_dat |>
                     c("School", "year", 
                       grep("_team1$", names(full_dat), 
                            value = TRUE))))
+
+# update UMBC by hand since they're not in NCAA database???
+# order is ppg, ppg allowed, pace, mov, sos, osrs, dsrs,  adj_or adj_dr
+umbc_stats <- c(25, 11, 73.1, 68.5,
+                mean(team_stats$Pace, na.rm = TRUE),
+                mean(team_stats$MOV, na.rm = TRUE), -3.84,
+                mean(team_stats$OSRS, na.rm = TRUE), 
+                mean(team_stats$DSRS, na.rm = TRUE), 
+                105.6, 99)
+full_data <- full_dat |> 
+  mutate(
+    # For team1 (columns 11 to 21), replace only NA values
+    across(11:21, ~ if_else(team1 == "UMBC" & is.na(.),
+                            umbc_stats[match(cur_column(), names(full_dat)[11:21])], .)),
+    # For team2 (columns 23 to 33), replace only NA values
+    across(23:33, ~ if_else(team2 == "UMBC" & is.na(.),
+                            umbc_stats[match(cur_column(), names(full_dat)[23:33])], .)),
+    # Update Conf_team1 and Conf_team2 for UMBC
+    Conf_team1 = if_else(team1 == "UMBC", "AEC", Conf_team1),
+    Conf_team2 = if_else(team2 == "UMBC", "AEC", Conf_team2)
+  )
 # write CSVs!
 write.csv(brackets, "data/men/brackets.csv")
 write.csv(team_stats, "data/men/team-stats.csv")
-write.csv(full_dat, "data/men/full-data.csv")
+write.csv(full_data, "data/men/full-data.csv")

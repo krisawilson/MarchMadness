@@ -214,16 +214,16 @@ simulate_tournament <- function(data, model) {
       library(pkg, character.only = TRUE)
     }
   }
-  sp1 <- data_reg |> filter(region == "SPOKANE1")
+  sp1 <- data_reg |> filter(region == "south")
   sp1_winner <- simulate_region(region_data = sp1, model = model)
   
-  sp2 <- data_reg |> filter(region == "SPOKANE2")
+  sp2 <- data_reg |> filter(region == "east")
   sp2_winner <- simulate_region(region_data = sp2, model = model)
   
-  b1 <- data_reg |> filter(region == "BIRMINGHAM1")
+  b1 <- data_reg |> filter(region == "west")
   b1_winner <- simulate_region(region_data = b1, model = model)
   
-  b2 <- data_reg |> filter(region == "BIRMINGHAM2")
+  b2 <- data_reg |> filter(region == "midwest")
   b2_winner <- simulate_region(region_data = b2, model = model)
   
   champion <- simulate_final_four(sp1_winner, sp2_winner, 

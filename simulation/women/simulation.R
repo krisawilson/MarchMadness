@@ -1,7 +1,7 @@
 # load stuff
 library(tidyverse); suppressPackageStartupMessages(library(ranger));
-source("simulation/functions/simulation-functions.R")
-dat <- read_csv("simulation/input-data.csv")
+source("simulation/women/functions/simulation-functions.R")
+dat <- read_csv("simulation/women/input-data.csv")
 
 ## this preprocessing has to be done before running
 ## simulate_tournament()

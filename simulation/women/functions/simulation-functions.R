@@ -1,7 +1,7 @@
 ## REGION NAMES IN simulate_tournament() WILL DEPEND ON YEAR
 
 library(ranger)
-load("modeling/women/models.RData")
+load("modeling/men/models.RData")
 build_bracket <- function(region_data) {
   # build the bracket from matchup-level data (one row per team)
   if (!"tidyverse" %in% .packages()) {

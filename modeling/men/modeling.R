@@ -36,7 +36,7 @@ train_data <- train_data |>
 step_model <- train(
   team1_win ~ ., data = train_data, method = "glmStepAIC",
   trControl = ctrl, metric = "ROC", family = binomial,
-  trace = FALSE 
+  trace = FALSE
 )
 logit_model <- step_model$finalModel
 rm(step_model)
@@ -120,18 +120,20 @@ xgb_preds <- predict(xgb_fit,
                      as.matrix(select(test_data, -team1_win)))
 roc_xgb <- roc(test_data$team1_win, xgb_preds)
 auc(roc_xgb)
-#xgb_classes <- if_else(xgb_preds <= 0.5, "yes", "no")
-#confusionMatrix(as.factor(xgb_classes), 
-#                reference = test_data$team1_win, 
-#                positive = "yes")
+xgb_classes <- if_else(xgb_preds <= 0.5, "yes", "no")
+confusionMatrix(as.factor(xgb_classes),
+                reference = test_data$team1_win,
+                positive = "yes")
 
 # last but certainly not least: the gam
-#gam_preds <- predict(gam_model, select(test_data, -team1_win), 
+#gam_preds <- predict(gam_model, select(test_data, -team1_win),
 #                                       type = "response")
 #roc_gam <- roc(test_data$team1_win, as.numeric(gam_preds))
 #auc(roc_gam)
 
-# takeaway: probably mix the random forest and logistic regression models
+# takeaway: logistic regression model... they all performed bad though,
+# so try to get more data + different data bc men's basketball is
+# different than women's basketball!
 
 # save models!
-save(logit_model, rf_mod, file = "modeling/men/models.RData")
+save(logit_model, file = "modeling/men/models.RData")
