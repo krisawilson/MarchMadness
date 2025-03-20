@@ -98,155 +98,8 @@ for (i in 1:N) {
 (end <- proc.time() - start)
 
 save(simulation_results, file ="simulation/men/results.RData")
-
-# south ----
-
-# south, block 1 winner
-sp1_block1 <- sapply(simulation_results,
-                     function(x) x$sp1$block1)
-a1 <- as.data.frame(prop.table(table(sp1_block1))) |> arrange(desc(Freq))
-
-# south, block 2 winner
-sp1_block2 <- sapply(simulation_results,
-                     function(x) x$sp1$block2)
-a2 <- as.data.frame(prop.table(table(sp1_block2))) |> arrange(desc(Freq))
-
-# south, block 3 winner
-sp1_block3 <- sapply(simulation_results,
-                     function(x) x$sp1$block3)
-a3 <- as.data.frame(prop.table(table(sp1_block3))) |> arrange(desc(Freq))
-
-# south, block 4 winner
-sp1_block4 <- sapply(simulation_results,
-                     function(x) x$sp1$block4)
-a4 <- as.data.frame(prop.table(table(sp1_block4))) |> arrange(desc(Freq))
-
-# south, semi winners
-sp1_semi1 <- sapply(simulation_results,
-                    function(x) x$sp1$semi1)
-a5 <- as.data.frame(prop.table(table(sp1_semi1))) |> arrange(desc(Freq))
-
-sp1_semi2 <- sapply(simulation_results,
-                    function(x) x$sp1$semi2)
-a6 <- as.data.frame(prop.table(table(sp1_semi2))) |> arrange(desc(Freq))
-
-# south region winner
-sp1_region <- sapply(simulation_results,
-                     function(x) x$sp1$region)
-a7 <- as.data.frame(prop.table(table(sp1_region))) |> arrange(desc(Freq))
-
-# east ----
-
-# east, block 1 winner
-sp2_block1 <- sapply(simulation_results,
-                     function(x) x$sp2$block1)
-a8 <- as.data.frame(prop.table(table(sp2_block1))) |> arrange(desc(Freq))
-
-# east, block 2 winner
-sp2_block2 <- sapply(simulation_results,
-                     function(x) x$sp2$block2)
-a9 <- as.data.frame(prop.table(table(sp2_block2))) |> arrange(desc(Freq))
-
-# east, block 3 winner
-sp2_block3 <- sapply(simulation_results,
-                     function(x) x$sp2$block3)
-a10 <- as.data.frame(prop.table(table(sp2_block3))) |> arrange(desc(Freq))
-
-# east, block 4 winner
-sp2_block4 <- sapply(simulation_results,
-                     function(x) x$sp2$block4)
-a11 <- as.data.frame(prop.table(table(sp2_block4))) |> arrange(desc(Freq))
-
-# east, semi winners
-sp2_semi1 <- sapply(simulation_results,
-                    function(x) x$sp2$semi1)
-a12 <- as.data.frame(prop.table(table(sp2_semi1))) |> arrange(desc(Freq))
-
-sp2_semi2 <- sapply(simulation_results,
-                    function(x) x$sp2$semi2)
-a13 <- as.data.frame(prop.table(table(sp2_semi2))) |> arrange(desc(Freq))
-
-# east region winner
-sp2_region <- sapply(simulation_results,
-                     function(x) x$sp2$region)
-a14 <- as.data.frame(prop.table(table(sp2_region))) |> arrange(desc(Freq))
-
-# west ----
-# west, block 1 winner
-b1_block1 <- sapply(simulation_results,
-                    function(x) x$b1$block1)
-a15 <- as.data.frame(prop.table(table(b1_block1))) |> arrange(desc(Freq))
-
-# west, block 2 winner
-b1_block2 <- sapply(simulation_results,
-                    function(x) x$b1$block2)
-a16 <- as.data.frame(prop.table(table(b1_block2))) |> arrange(desc(Freq))
-
-# west, block 3 winner
-b1_block3 <- sapply(simulation_results,
-                    function(x) x$b1$block3)
-a17 <- as.data.frame(prop.table(table(b1_block3))) |> arrange(desc(Freq))
-
-# west, block 4 winner
-b1_block4 <- sapply(simulation_results,
-                    function(x) x$b1$block4)
-a18 <- as.data.frame(prop.table(table(b1_block4))) |> arrange(desc(Freq))
-
-# west, semi winners
-b1_semi1 <- sapply(simulation_results,
-                   function(x) x$b1$semi1)
-a19 <- as.data.frame(prop.table(table(b1_semi1))) |> arrange(desc(Freq))
-
-b1_semi2 <- sapply(simulation_results,
-                   function(x) x$b1$semi2)
-a20 <- as.data.frame(prop.table(table(b1_semi2))) |> arrange(desc(Freq))
-
-# west region winner
-b1_region <- sapply(simulation_results,
-                    function(x) x$b1$region)
-a21 <- as.data.frame(prop.table(table(b1_region))) |> arrange(desc(Freq))
-
-# midwest ----
-# midwest, block 1 winner
-b2_block1 <- sapply(simulation_results,
-                    function(x) x$b2$block1)
-a22 <- as.data.frame(prop.table(table(b2_block1))) |> arrange(desc(Freq))
-
-# midwest, block 2 winner
-b2_block2 <- sapply(simulation_results,
-                    function(x) x$b2$block2)
-a23 <- as.data.frame(prop.table(table(b2_block2))) |> arrange(desc(Freq))
-
-# midwest, block 3 winner
-b2_block3 <- sapply(simulation_results,
-                    function(x) x$b2$block3)
-a24 <- as.data.frame(prop.table(table(b2_block3))) |> arrange(desc(Freq))
-
-# midwest, block 4 winner
-b2_block4 <- sapply(simulation_results,
-                    function(x) x$b2$block4)
-a25 <- as.data.frame(prop.table(table(b2_block4))) |> arrange(desc(Freq))
-
-# midwest, semi winners
-b2_semi1 <- sapply(simulation_results,
-                   function(x) x$b2$semi1)
-a26 <- as.data.frame(prop.table(table(b2_semi1))) |> arrange(desc(Freq))
-
-b2_semi2 <- sapply(simulation_results,
-                   function(x) x$b2$semi2)
-a27 <- as.data.frame(prop.table(table(b2_semi2))) |> arrange(desc(Freq))
-
-# midwest region winner
-b2_region <- sapply(simulation_results,
-                    function(x) x$b2$region)
-a28 <- as.data.frame(prop.table(table(b2_region))) |> arrange(desc(Freq))
-
-save(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,
-     a20,a21,a22,a23,a24,a25,a26,a27,a28, 
-     file = "simulation/men/prelim-rounds.RData")
-
 # final rounds results ----
-load("simulation/results.RData")
+#load("simulation/results.RData")
 # Extract champion outcomes from each simulation
 champions <- sapply(simulation_results, function(x) x$champion)
 as.data.frame(prop.table(table(champions))) |> arrange(desc(Freq))
@@ -263,3 +116,96 @@ as.data.frame(prop.table(table(b1_winners))) |> arrange(desc(Freq))
 
 b2_winners <- sapply(simulation_results, function(x) x$b2)
 as.data.frame(prop.table(table(b2_winners))) |> arrange(desc(Freq))
+
+# preliminary rounds simulations ----
+# # south ----
+# 
+# # south, block 1 winner
+# sp1_block1 <- sapply(simulation_results,
+#                      function(x) x$sp1)
+# a1 <- as.data.frame(prop.table(table(sp1_block1))) |> arrange(desc(Freq))
+# 
+# # south, block 2 winner
+# sp1_block2 <- sapply(simulation_results,
+#                      function(x) x$sp2)
+# a2 <- as.data.frame(prop.table(table(sp1_block2))) |> arrange(desc(Freq))
+# 
+# # south, block 3 winner
+# sp1_block3 <- sapply(simulation_results,
+#                      function(x) x$sb1)
+# a3 <- as.data.frame(prop.table(table(sp1_block3))) |> arrange(desc(Freq))
+# 
+# # south, block 4 winner
+# sp1_block4 <- sapply(simulation_results,
+#                      function(x) x$b2)
+# a4 <- as.data.frame(prop.table(table(sp1_block4))) |> arrange(desc(Freq))
+# 
+# # east ----
+# 
+# # east, block 1 winner
+# sp2_block1 <- sapply(simulation_results,
+#                      function(x) x$sp1)
+# a8 <- as.data.frame(prop.table(table(sp2_block1))) |> arrange(desc(Freq))
+# 
+# # east, block 2 winner
+# sp2_block2 <- sapply(simulation_results,
+#                      function(x) x$sp2)
+# a9 <- as.data.frame(prop.table(table(sp2_block2))) |> arrange(desc(Freq))
+# 
+# # east, block 3 winner
+# sp2_block3 <- sapply(simulation_results,
+#                      function(x) x$b1)
+# a10 <- as.data.frame(prop.table(table(sp2_block3))) |> arrange(desc(Freq))
+# 
+# # east, block 4 winner
+# sp2_block4 <- sapply(simulation_results,
+#                      function(x) x$b2)
+# a11 <- as.data.frame(prop.table(table(sp2_block4))) |> arrange(desc(Freq))
+# 
+# # west ----
+# # west, block 1 winner
+# b1_block1 <- sapply(simulation_results,
+#                     function(x) x$b11)
+# a15 <- as.data.frame(prop.table(table(b1_block1))) |> arrange(desc(Freq))
+# 
+# # west, block 2 winner
+# b1_block2 <- sapply(simulation_results,
+#                     function(x) x$b12)
+# a16 <- as.data.frame(prop.table(table(b1_block2))) |> arrange(desc(Freq))
+# 
+# # west, block 3 winner
+# b1_block3 <- sapply(simulation_results,
+#                     function(x) x$b13)
+# a17 <- as.data.frame(prop.table(table(b1_block3))) |> arrange(desc(Freq))
+# 
+# # west, block 4 winner
+# b1_block4 <- sapply(simulation_results,
+#                     function(x) x$b14)
+# a18 <- as.data.frame(prop.table(table(b1_block4))) |> arrange(desc(Freq))
+# 
+# 
+# # midwest ----
+# # midwest, block 1 winner
+# b2_block1 <- sapply(simulation_results,
+#                     function(x) x$b21)
+# a22 <- as.data.frame(prop.table(table(b2_block1))) |> arrange(desc(Freq))
+# 
+# # midwest, block 2 winner
+# b2_block2 <- sapply(simulation_results,
+#                     function(x) x$b22)
+# a23 <- as.data.frame(prop.table(table(b2_block2))) |> arrange(desc(Freq))
+# 
+# # midwest, block 3 winner
+# b2_block3 <- sapply(simulation_results,
+#                     function(x) x$b23)
+# a24 <- as.data.frame(prop.table(table(b2_block3))) |> arrange(desc(Freq))
+# 
+# # midwest, block 4 winner
+# b2_block4 <- sapply(simulation_results,
+#                     function(x) x$b24)
+# a25 <- as.data.frame(prop.table(table(b2_block4))) |> arrange(desc(Freq))
+# 
+# save(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,
+#      a20,a21,a22,a23,a24,a25,a26,a27,a28, 
+#      file = "simulation/men/prelim-rounds.RData")
+# 
