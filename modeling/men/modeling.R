@@ -1,13 +1,15 @@
 # packages ----
-library(tidyverse)
-library(caret)
-library(glmnet)
-library(xgboost)
-library(ranger)
-library(mgcv)
-library(pROC)
-#libary(vip)
-
+# packages ----
+packges <- c("tidyverse", "caret", "glmnet", "xgboost", 
+             "ranger", "mgcv", "pROC", "vip")
+for (pkg in packages) {
+  if (!pkg %in% installed.packages()){
+    install.packages(pkg, quiet = TRUE)
+  }
+  if (!pkg %in% .packages()) {
+    suppressPackageStartupMessages(library(pkg, character.only = TRUE))
+  }
+}
 # data prep ----
 clean_data <- read_csv("data/men/clean-data.csv")
 # get just raw data

@@ -33,8 +33,8 @@ rat19 <- "https://www.sports-reference.com/cbb/seasons/women/2019-ratings.html"
 rat18 <- "https://www.sports-reference.com/cbb/seasons/women/2018-ratings.html"
 
 ratings24 <- scrape_adv_stats_wbb(url = rat24, year = 2024)
-ratings23 <- scrape_adv_stats_wbb(url = rat24, year = 2023)
-ratings22 <- scrape_adv_stats_wbb(url = rat24, year = 2022)
+ratings23 <- scrape_adv_stats_wbb(url = rat23, year = 2023)
+ratings22 <- scrape_adv_stats_wbb(url = rat22, year = 2022)
 ratings19 <- scrape_adv_stats_wbb(url = rat19, year = 2019)
 ratings18 <- scrape_adv_stats_wbb(url = rat18, year = 2018)
 rm(rat22,rat23,rat24,rat19,rat18)
