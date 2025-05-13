@@ -14,57 +14,6 @@ A reproducible R-based pipeline to simulate and predict outcomes for both Men’
 
 ---
 
-## Repository Structure
-
-```text
-.
-├── data
-│   ├── men
-│   │   ├── brackets.csv
-│   │   ├── clean-data.csv
-│   │   ├── full-data.csv
-│   │   └── team-stats.csv
-│   └── women
-│       ├── brackets.csv
-│       ├── clean-data.csv
-│       ├── full-data.csv
-│       └── team-stats.csv
-│
-├── preprocessing
-│   ├── functions
-│   │   └── data-cleaning-functions.R
-│   └── data-cleaning.R
-│
-├── modeling
-│   ├── men
-│   │   ├── feature-engineering.R
-│   │   ├── modeling.R
-│   │   └── models.RData
-│   └── women
-│       ├── feature-engineering.R
-│       ├── modeling.R
-│       └── models.RData
-│
-├── simulation
-│   ├── men
-│   │   ├── functions
-│   │   │   └── simulation-functions.R
-│   │   ├── input-data-prep.R
-│   │   ├── input-data.csv
-│   │   └── simulation.R
-│   └── women
-│       ├── functions
-│       │   └── simulation-functions.R
-│       ├── input-data-prep.R
-│       ├── input-data.csv
-│       └── simulation.R
-│
-├── requirements.R
-└── README.md
-````
-
----
-
 ## Installation
 
 1. **Clone the repo**
@@ -209,7 +158,4 @@ Repeat for the women’s workflow by substituting `men` → `women`.
 Please follow existing code style and document any new functions.
 
 
-*Happy predicting—and may your bracket survive beyond the Sweet Sixteen!* 🏀🎉
-
-```
-```
+*May your bracket survive beyond the Sweet Sixteen!*
