@@ -1,10 +1,3 @@
-Below is a drop-in-ready **README.md** you can copy & paste straight into RStudio. All code blocks are fenced and language-tagged so RStudio’s RMarkdown/Markdown preview will render them correctly.
-
-````markdown
----
-title: "March Madness Simulator & Predictor"
----
-
 # March Madness Simulator & Predictor
 
 A reproducible R-based pipeline to simulate and predict outcomes for both Men’s and Women’s March Madness tournaments. This repository ingests historical data, cleans and preprocesses it, engineers predictive features, fits and compares statistical and machine learning models, and then runs Monte Carlo–style simulations to forecast the upcoming year’s bracket.
@@ -76,16 +69,16 @@ A reproducible R-based pipeline to simulate and predict outcomes for both Men’
 
 1. **Clone the repo**
 
-   ```bash
-   git clone https://github.com/yourusername/march-madness-simulator.git
-   cd march-madness-simulator
-   ```
+```bash
+git clone https://github.com/yourusername/march-madness-simulator.git
+cd march-madness-simulator
+```
 
 2. **Install dependencies**
 
-   ```r
-   source("requirements.R")
-   ```
+```r
+source("requirements.R")
+```
 
 ---
 
@@ -93,8 +86,7 @@ A reproducible R-based pipeline to simulate and predict outcomes for both Men’
 
 All raw and processed data lives under `data/<men|women>/`.
 
-* **brackets.csv**
-  Records of every game in historical brackets, containing:
+* **brackets.csv**: Records of every game in historical brackets, containing:
 
   * `team_1`, `team_2`
   * `seed_1`, `seed_2`
@@ -103,14 +95,11 @@ All raw and processed data lives under `data/<men|women>/`.
   * `round` (e.g., “Round of 64”, “Final Four”)
   * `year`
 
-* **full-data.csv**
-  Raw matchup statistics (offensive/defensive metrics, efficiency, etc.) for each team in each game.
+* **full-data.csv**: Raw matchup statistics (offensive/defensive metrics, efficiency, etc.) for each team in each game.
 
-* **clean-data.csv**
-  Differenced statistics between two teams (team1 − team2) for model inputs.
+* **clean-data.csv**: Differenced statistics between two teams (team1 − team2) for model inputs.
 
-* **team-stats.csv**
-  Season-long team-level metrics (conference, record, advanced stats).
+* **team-stats.csv**: Season-long team-level metrics (conference, record, rate statistics, advanced statistics).
 
 ---
 
@@ -146,7 +135,7 @@ Under `modeling/<men|women>/`:
    Rscript modeling/men/modeling.R
    ```
 
-   Fits multiple models (e.g., logistic regression, random forest, gradient boosting) and compares via cross-validation.
+   Fits multiple models and compares via cross-validation.
 
 3. **Saved Models**
 
@@ -219,13 +208,6 @@ Repeat for the women’s workflow by substituting `men` → `women`.
 
 Please follow existing code style and document any new functions.
 
----
-
-## License
-
-Released under the [MIT License](LICENSE).
-
----
 
 *Happy predicting—and may your bracket survive beyond the Sweet Sixteen!* 🏀🎉
 
