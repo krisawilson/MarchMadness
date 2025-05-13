@@ -19,8 +19,8 @@ A reproducible R-based pipeline to simulate and predict outcomes for both Men’
 1. **Clone the repo**
 
 ```bash
-git clone https://github.com/yourusername/march-madness-simulator.git
-cd march-madness-simulator
+git clone https://github.com/krisawilson/MarchMadness.git
+cd MarchMadness
 ```
 
 2. **Install dependencies**
@@ -33,9 +33,9 @@ source("requirements.R")
 
 ## Data Description
 
-All raw and processed data lives under `data/<men|women>/`.
+All raw data is scraped from [Sports Reference](https://www.sports-reference.com/cbb/) and processed data lives under `data/<men|women>/`.
 
-* **brackets.csv**: Records of every game in historical brackets, containing:
+* **brackets.csv**: Records of every game in past brackets, containing the following information:
 
   * `team_1`, `team_2`
   * `seed_1`, `seed_2`
@@ -132,7 +132,7 @@ Rscript simulation/men/input-data-prep.R
 Rscript simulation/men/simulation.R
 ```
 
-Repeat for the women’s workflow by substituting `men` → `women`.
+Repeat for the women’s workflow by substituting `women` in place of `men`.
 
 ---
 
