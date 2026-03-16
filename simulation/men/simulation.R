@@ -20,23 +20,27 @@ models <- list(
   bayes_model = bayes_model
 )
 
-# 2. define first four. update with 2026
-# The 8 teams playing in the 4 First Four games
+# define first four. this is for 2026
 first_four_matchups <- tibble(
-  team_a = c("NC State", "UMBC", "Prairie View", "SMU"),
+  team_a = c("NC State", "UMBC", "Prairie View A&M", "Southern Methodist"),
   team_b = c("Texas", "Howard", "Lehigh", "Miami (OH)"),
   seed   = c(11, 11, 16, 16),
   # need to check the regions
-  region = c("west", "south", "midwest", "midwest")
+  region = c("West", "Midwest", "South", "Midwest")
 )
 
-# Extract your base 60 teams (teams NOT in the First Four)
-# Assuming you have a dataframe of all 68 tournament teams called `all_68_teams`
-base_60_teams <- all_68_teams |> 
-  filter(!team %in% c(first_four_matchups$team_a, first_four_matchups$team_b)) |>
-  select(team, seed, region)
+# extract all teams
+all_teams <- dat |> 
+  select(team = team1, seed = seed1, region = region1) |> 
+  distinct()
 
-N <- 15000
+# get field that doesn't have to play-in
+base_60_teams <- all_teams |> 
+  # could use filter(!team %in% ...)
+  filter_out(team %in% c(first_four_matchups$team_a, 
+                         first_four_matchups$team_b))
+
+N <- 20000
 simulation_results <- vector("list", N) # initialization
 chosen_model <- "ensemble_weighted" # can easily change
 
@@ -44,15 +48,16 @@ start <- proc.time()
 for(i in 1:N) {
   
   # Step A: Simulate First Four to get the 4 winners
-  ff_winners <- simulate_first_four(first_four, 
+  ff_winners <- simulate_first_four(first_four_matchups, 
                                     chosen_model, dat, models)
   # step B
   current_64_bracket <- insert_ff_winners(
     base_60_teams, ff_winners
   )
   # Step C: Run the main 64-team simulation
-  result <- simulate_tournament(data = current_64_bracket, 
-                                model = chosen_model, 
+  result <- simulate_tournament(bracket_64 = current_64_bracket, 
+                                matchup_data = dat,
+                                model_choice = chosen_model, 
                                 models_list = models)
   
   simulation_results[[i]] <- result
