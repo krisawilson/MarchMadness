@@ -16,6 +16,7 @@ trim_dat <- full_data |>
          # margin of victory or seed difference since won't have
          # that when I go to do actual predictions on unplayed
          # tournaments. that's data leakage!
+         # technically I could do seed difference...
          PPG_diff = PPG_team1 - PPG_team2,
          PPG_Allowed_diff = PPG_Allowed_team1 - PPG_Allowed_team2,
          Pace_diff = Pace_team1 - Pace_team2,
