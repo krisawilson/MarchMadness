@@ -2,6 +2,9 @@
 source("preprocessing/women/functions/data-cleaning-functions.R")
 
 # grab bracket data ----
+# 2025
+t25 <- "https://www.sports-reference.com/cbb/postseason/women/2025-ncaa.html"
+b25 <- scrape_bracket_wbb(url = t25, year = 2025)
 # 2024
 t24 <- "https://www.sports-reference.com/cbb/postseason/women/2024-ncaa.html"
 b24 <- scrape_bracket_wbb(url = t24, year = 2024)
@@ -9,8 +12,9 @@ b24 <- scrape_bracket_wbb(url = t24, year = 2024)
 t23 <- "https://www.sports-reference.com/cbb/postseason/women/2023-ncaa.html"
 b23 <- scrape_bracket_wbb(url = t23, year = 2023)
 # manually fix the Stanford vs Sacred Heart error
-b23[46,"seed2"] <- 16; b23[46,"score1"] <- 92; 
-b23[46, "score2"] <- 49; b23[46,"winner"] <- "Stanford";
+# I think this has been fixed
+#b23[46,"seed2"] <- 16; b23[46,"score1"] <- 92; 
+#b23[46, "score2"] <- 49; b23[46,"winner"] <- "Stanford";
 
 # 2022
 t22 <- "https://www.sports-reference.com/cbb/postseason/women/2022-ncaa.html"
@@ -23,44 +27,49 @@ b19 <- scrape_bracket_wbb(url = t19, year = 2019)
 # 2018
 t18 <- "https://www.sports-reference.com/cbb/postseason/women/2018-ncaa.html"
 b18 <- scrape_bracket_wbb(url = t18, year = 2018)
-rm(t22,t23,t24,t19,t18)
+rm(t25, t22,t23,t24,t19,t18)
 
 # get ratings/stats data: ----
+rat25 <- "https://www.sports-reference.com/cbb/seasons/women/2025-ratings.html"
 rat24 <- "https://www.sports-reference.com/cbb/seasons/women/2024-ratings.html"
 rat23 <- "https://www.sports-reference.com/cbb/seasons/women/2023-ratings.html"
 rat22 <- "https://www.sports-reference.com/cbb/seasons/women/2022-ratings.html"
 rat19 <- "https://www.sports-reference.com/cbb/seasons/women/2019-ratings.html"
 rat18 <- "https://www.sports-reference.com/cbb/seasons/women/2018-ratings.html"
 
+ratings25 <- scrape_adv_stats_wbb(url = rat25, year = 2025)
 ratings24 <- scrape_adv_stats_wbb(url = rat24, year = 2024)
 ratings23 <- scrape_adv_stats_wbb(url = rat23, year = 2023)
 ratings22 <- scrape_adv_stats_wbb(url = rat22, year = 2022)
 ratings19 <- scrape_adv_stats_wbb(url = rat19, year = 2019)
 ratings18 <- scrape_adv_stats_wbb(url = rat18, year = 2018)
-rm(rat22,rat23,rat24,rat19,rat18)
+rm(rat25,rat22,rat23,rat24,rat19,rat18)
 
 
 # get pace ----
+u25 <- "https://www.sports-reference.com/cbb/seasons/women/2025-advanced-school-stats.html"
 u24 <- "https://www.sports-reference.com/cbb/seasons/women/2024-advanced-school-stats.html"
 u23 <- "https://www.sports-reference.com/cbb/seasons/women/2023-advanced-school-stats.html"
 u22 <- "https://www.sports-reference.com/cbb/seasons/women/2022-advanced-school-stats.html"
 u19 <- "https://www.sports-reference.com/cbb/seasons/women/2019-advanced-school-stats.html"
 u18 <- "https://www.sports-reference.com/cbb/seasons/women/2018-advanced-school-stats.html"
+p25 <- scrape_pace_wbb(url = u25, year = 2025)
 p24 <- scrape_pace_wbb(url = u24, year = 2024)
 p23 <- scrape_pace_wbb(url = u23, year = 2023)
 p22 <- scrape_pace_wbb(url = u22, year = 2022)
 p19 <- scrape_pace_wbb(url = u19, year = 2019)
 p18 <- scrape_pace_wbb(url = u19, year = 2018)
-rm(u24,u23,  u22, u19, u18)
+rm(u25, u24,u23,  u22, u19, u18)
 
 # combine data ----
-brackets <- bind_rows(b24, b23, b22, b19, b18)
-rm(b24, b23, b22, b19, b18)
-paces <- bind_rows(p24, p23, p22, p19, p18)
-rm(p22, p23, p24, p19, p18)
-ratings <- bind_rows(ratings24, ratings23, 
+brackets <- bind_rows(b25, b24, b23, b22, b19, b18)
+rm(b25, b24, b23, b22, b19, b18)
+paces <- bind_rows(p25, p24, p23, p22, p19, p18)
+rm(p25, p22, p23, p24, p19, p18)
+ratings <- bind_rows(ratings25, ratings24, ratings23, 
                      ratings22, ratings19, ratings18)
-rm(ratings22, ratings23, ratings24, ratings19, ratings18)
+rm(ratings25, ratings22, ratings23, ratings24, 
+   ratings19, ratings18)
 
 
 # join data! 
