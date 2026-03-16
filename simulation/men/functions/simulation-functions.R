@@ -1,6 +1,9 @@
 ## REGION NAMES IN simulate_tournament() WILL DEPEND ON YEAR
 
-library(ranger)
+library(tidyverse)
+library(xgboost)
+library(caret)
+library(mgcv)
 load("modeling/men/models.RData")
 build_bracket <- function(region_data) {
   # build the bracket from matchup-level data (one row per team)
@@ -42,44 +45,90 @@ get_matchup <- function(team_a, team_b, region_data) {
   return(result)
 }
 
-simulate_game <- function(team1, team2, model, region_data) {
-  # check packages
-  packages <- c("tidyverse", "ranger") # grab packages
-  for (pkg in packages) {
-    if (!pkg %in% .packages()) {
-      library(pkg, character.only = TRUE)
+simulate_game <- function(team_a, team_b, model_choice, 
+                          region_data, models_list) {
+  
+  # 1. Get the matchup features
+  matchup <- get_matchup(team_a, team_b, region_data)
+  
+  x_features <- select(matchup, -c(team1, seed1, team2, 
+                                   seed2, region))
+  
+  # 2. Helper function to extract win probability based on model type
+  get_prob <- function(mod_name) {
+    if (mod_name == "xgb_model") {
+      # Native XGBoost requires DMatrix
+      dtest <- xgb.DMatrix(data = as.matrix(x_features))
+      return(predict(models_list$xgb_model, dtest))
+    } else {
+      # Caret models use type = "prob"
+      return(predict(models_list[[mod_name]], 
+                     newdata = x_features, type = "prob")[,"yes"])
     }
   }
-  # grab matchup
-  matchup <- get_matchup(team1, team2, region_data)
   
-  # predict!
-  if (model == "ensemble") {
-    prob_rf <- predict(object = rf_mod, 
-                       data = matchup, 
-                       type = "response")$predictions[,"yes"]
-    prob_logit <- predict(object = logit_model, 
-                          newdata = matchup, 
-                          type = "response")
-    prob_team1 <- (prob_rf + prob_logit) / 2 
-  } else if (model == "rf") {
-    prob_team1 <- predict(object = rf_mod, 
-                          data = matchup, 
-                          type = "response")$predictions[,"yes"]
-  } else if (model == "logit_model") {
-    prob_team1 <- predict(object = logit_model, 
-                          newdata = matchup, 
-                          type = "response")
-  } else { 
-    stop("Model ", model, " not supported") 
-  }
-  
-  # simulate matchup
-  if(runif(1) < prob_team1) {
-    return(team1)
+  # 3. Calculate Win Probability for Team A
+  if (model_choice == "ensemble_avg") {
+    # simple average of  best models 
+    p_gam <- get_prob("gam_model")
+    p_xgb <- get_prob("xgb_model")
+    p_en  <- get_prob("en_model")
+    prob_team_a <- mean(c(p_gam, p_xgb, p_en))
+    
+  } else if (model_choice == "ensemble_weighted") {
+    # Weighted Average (giving more weight to models with higher AUC)
+    # Example weights: GAM (40%), XGBoost (40%), Elastic Net (20%)
+    p_gam <- get_prob("gam_model")
+    p_xgb <- get_prob("xgb_model")
+    p_en  <- get_prob("en_model")
+    prob_team_a <- (p_gam * 0.40) + (p_xgb * 0.40) + (p_en * 0.20)
+    
   } else {
-    return(team2)
+    # Single Model Selection
+    prob_team_a <- get_prob(model_choice)
   }
+  
+  # 4. The Monte Carlo Coin Flip
+  # Generate a random number between 0 and 1. If it's less than Team A's prob, Team A wins.
+  u <- runif(1)
+  if (u < prob_team_a) {
+    return(team_a)
+  } else {
+    return(team_b)
+  }
+}
+
+# simulate first four games, only need if bracket is 
+# created before First Four are played
+simulate_first_four <- function(ff_matchups, model_choice, 
+                                region_data, models_list) {
+  # Initialize an empty dataframe to hold the 4 advancing teams
+  advancing_teams <- tibble(team = character(), 
+                            seed = numeric(), 
+                            region = character())
+  
+  for (i in 1:nrow(ff_matchups)) {
+    t_a <- ff_matchups$team_a[i]
+    t_b <- ff_matchups$team_b[i]
+    
+    # Run the game simulation
+    winner <- simulate_game(t_a, t_b, model_choice, 
+                            region_data, models_list)
+    
+    # Store the winner with the seed and region they just won
+    advancing_teams <- advancing_teams |> bind_rows(
+      tibble(team = winner, seed = ff_matchups$seed[i], 
+             region = ff_matchups$region[i])
+    )
+  }
+  return(advancing_teams)
+}
+
+# after First Four have been played
+insert_ff_winners <- function(base_60, ff_winners) {
+  # Combine the 60 locked teams with the 4 play-in winners
+  final_64 <- bind_rows(base_60, ff_winners)
+  return(final_64)
 }
 
 simulate_block <- function(bracket, model, region_data, verbose = FALSE) {

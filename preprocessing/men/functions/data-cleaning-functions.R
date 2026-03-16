@@ -296,15 +296,20 @@ team_names_mbb <- function(col) {
     col == "Ohio St." ~ "Ohio State",
     col == "Montana St." ~ "Montana State",
     col == "SFA" ~ "Stephen F. Austin",
-    
-    # for men... once I change to Sports Refernce, this won't be an
-    # issue anymore
     col == "Virginia Commonwealth" ~ "VCU",
     col == "Saint Mary's (CA)" ~ "Saint Mary's",
     col == "UC Santa Barbara" ~ "UCSB",
     col == "Saint Peter's" ~ "St. Peter's",
     col == "Pittsburgh" ~ "Pitt",
     col == "Pennsylvania" ~ "Penn",
+    col == "St. John's" ~ "St. John's (NY)",
+    col == "Prairie View" ~ "Prairie View A&M",
+    col == "SMU" ~ "Southern Methodist",
+    col == "Hawai'i" ~ "Hawaii",
+    col == "LIU" ~ "Long Island University",
+    col == "Cal Baptist" ~ "California Baptist",
+    col == "Queens" ~ "Queens (NC)",
+    col == "TCU" ~ "Texas Christian",
     TRUE ~ col
   )
 }

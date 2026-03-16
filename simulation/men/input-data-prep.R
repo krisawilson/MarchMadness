@@ -3,17 +3,18 @@
 # OTHERWISE THE NCAA BRACKET WILL CHANGE
 ##################################################
 
+library(tidyverse)
 source("preprocessing/men/functions/data-cleaning-functions.R")
-source("simulation/men/functions/simulation-functions.R")
+#source("simulation/men/functions/simulation-functions.R")
 
 # get ratings/stats data:
-rat25 <- "https://www.sports-reference.com/cbb/seasons/men/2025-ratings.html"
-ratings25 <- scrape_adv_stats_mbb(url = rat25, year = 2025)
+rat26 <- "https://www.sports-reference.com/cbb/seasons/men/2026-ratings.html"
+ratings26 <- scrape_adv_stats_mbb(url = rat26, year = 2026)
 # get pace:
-u25 <- "https://www.sports-reference.com/cbb/seasons/men/2024-advanced-school-stats.html"
-p25 <- scrape_pace_mbb(url = u25, year = 2025)
+u26 <- "https://www.sports-reference.com/cbb/seasons/men/2026-advanced-school-stats.html"
+p26 <- scrape_pace_mbb(url = u26, year = 2026)
 # join!
-team_stats <- inner_join(ratings25, p25, by = c("School", "year"))
+team_stats <- inner_join(ratings26, p26, by = c("School", "year"))
 # small cleanup
 team_stats <- team_stats |> 
   # move pace around
@@ -22,29 +23,17 @@ team_stats <- team_stats |>
   # consistent team names
   mutate(School = team_names_mbb(School))
 
-# grab bracket from NCAA. this one's broken because first four games
-# are complete!
-#url1 <- "https://www.ncaa.com/brackets/basketball-men/d1/2025"
-
-url2 <- "https://www.sports-reference.com/cbb/postseason/men/2025-ncaa.html"
-bracket25 <- scrape_bracket_mbb_empty(url = url2, year = 2025)
-rm(p25, ratings25, rat25, u25, url2)
-# clean up data
-b25 <- bracket25 |> 
-  filter(!(is.na(team1) & is.na(team2))) |> 
-  # manually put in first four winners
-  mutate(team2 = if_else(team1 == "Duke", "Mount St. Mary's",
-                         if_else(team1 == "Illinois", "Xavier", team2)),
-         seed2 = if_else(team1 == "Duke", 16L,
-                         if_else(team1 == "Illinois", 11L, seed2)))
-
+rm(p26, ratings26, rat26, u26)
+# hard-code 2026 men's bracket
+b26 <- read_csv("data/men/2026_ncaa_bracket_expanded.csv")
 
 # fix team names again--this is on Sports Reference!
-b25 <- b25 |> mutate(team1 = team_names_mbb(team1),
-                     team2 = team_names_mbb(team2))
+b26 <- b26 |> mutate(team1 = team_names_mbb(team1),
+                     team2 = team_names_mbb(team2),
+                     year = 2026)
 
 # final join! team 1 first
-full_dat <- b25 |>
+full_dat <- b26 |>
   left_join(team_stats, 
             # schools and years should match
             by = c("team1" = "School", "year" = "year")) |>
@@ -66,34 +55,29 @@ full_dat <- full_dat |>
                            value = TRUE)))) |> 
   select(-year)
 
-rm(bracket25, team_stats)
+rm(b26, team_stats)
 
-# at the time of writing, still two first four teams
-# but I just replaced them manually bc it's 12:30am
-# and I need to make my bracket before noon tmr
+# manually input UMBC stats
+# Define the exact columns you need to fill
+umbc_cols <- c("PPG_team2", "PPG_Allowed_team2", "Pace_team2", "MOV_team2", 
+               "SOS_team2", "OSRS_team2", "DSRS_team2", "Adj_ORtg_team2", 
+               "Adj_DRtg_team2")
 
-# give the first four teams the average of the other stats
-# full <- full_dat |>
-#   mutate(across(7:ncol(full_dat), ~{
-#     # Compute mean and standard deviation, ignoring NAs.
-#     m <- mean(., na.rm = TRUE)
-#     s <- sd(., na.rm = TRUE)
-#     x <- .
-#     missing <- is.na(x) # Identify NA positions.
-#     # Replace NAs with random draws from a normal distribution
-#     # with mean m and sd s.
-#     x[missing] <- rnorm(sum(missing), mean = m, sd = s)
-#     x
-#   })) |>
-# rm(full_dat)
+# Inject the numbers directly into the UMBC row
+full_dat[full_dat$team2 == "UMBC", umbc_cols] <- list(
+  76.2,  # PPG_team2
+  65.2,  # PPG_Allowed_team2
+  65.9,  # Pace_team2
+  4.9,   # MOV_team2
+  0,  # SOS_team2
+  0,   # OSRS_team2
+  0,  # DSRS_team2
+  114.7, # Adj_ORtg_team2
+  100.9  # Adj_DRtg_team2
+)
+
 compute_all_matchup_differences <- function(df) {
   
-  packages <- c("dplyr", "tidyr") # grab packages
-  for (pkg in packages) {
-    if (!pkg %in% .packages()) {
-      library(pkg, character.only = TRUE)
-    }
-  }
   # Extract team statistics from both team1 and team2 columns
   team1_df <- df |>
     select(team = team1, seed = seed1, 
@@ -117,8 +101,7 @@ compute_all_matchup_differences <- function(df) {
   matchups <- teams |>
     # rename all columns except "team"
     rename_with(~ paste0(., "_team1"), -team) |> 
-    inner_join(teams |> rename_with(~ paste0(., "_team2"), -team),
-               by = character()) |>
+    cross_join(teams |> rename_with(~ paste0(., "_team2"), -team)) |> 
     filter(team.x != team.y)
   
   # Compute differences for each stat (team A minus team B)
