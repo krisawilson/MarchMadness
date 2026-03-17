@@ -58,11 +58,12 @@ for(i in 1:N) {
   result <- simulate_tournament(bracket_64 = current_64_bracket, 
                                 matchup_data = dat,
                                 model_choice = chosen_model, 
-                                models_list = models)
+                                models_list = models,
+                                return_all = TRUE)
   
   simulation_results[[i]] <- result
   
-  if(i %% 10 == 0) cat("Iteration", i, "completed...\n")
+  if(i %% 100 == 0) cat("Iteration", i, "completed...\n")
 }
 end <- proc.time()
 print(end - start)
