@@ -61,7 +61,7 @@ for(i in 1:N) {
   
   simulation_results[[i]] <- result
   
-  if(i %% 1 == 0) cat("Iteration", i, "completed...\n")
+  if(i %% 100 == 0) cat("Iteration", i, "completed...\n")
 }
 end <- proc.time()
 print(end - start)
