@@ -57,16 +57,15 @@ simulate_game <- function(team_a, team_b, model_choice,
   if (model_choice == "ensemble_avg") {
     # simple average of best models
     p_gam <- get_prob("gam_model")
-    p_xgb <- get_prob("xgb_model")
-    p_en  <- get_prob("en_model")
-    prob_team_a <- mean(c(p_gam, p_xgb, p_en))
+    p_rf  <- get_prob("rf_model")
+    prob_team_a <- mean(c(p_gam, p_rf))
     
     # weighted average of best models
   } else if (model_choice == "ensemble_weighted") {
     p_gam <- get_prob("gam_model")
     p_xgb <- get_prob("xgb_model")
-    p_en  <- get_prob("en_model")
-    prob_team_a <- (p_gam * 0.40) + (p_xgb * 0.40) + (p_en * 0.20)
+    p_rf  <- get_prob("rf_model")
+    prob_team_a <- (p_gam * 0.40) + (p_xgb * 0.20) + (p_rf * 0.40)
     # single model
   } else {
     prob_team_a <- get_prob(model_choice)
@@ -212,10 +211,10 @@ simulate_final_four <- function(rc1, rc2, rc3, rc4,
 simulate_tournament <- function(bracket_64, matchup_data, 
                                 model_choice, models_list, 
                                 return_all = FALSE) {
-  sp1 <- bracket_64 |> filter(region == "South")
-  sp2 <- bracket_64 |> filter(region == "East")
-  b1  <- bracket_64 |> filter(region == "West")
-  b2  <- bracket_64 |> filter(region == "Midwest")
+  sp1 <- bracket_64 |> filter(region == "FORT WORTH 1")
+  sp2 <- bracket_64 |> filter(region == "SACRAMENTO 2")
+  b1  <- bracket_64 |> filter(region == "SACRAMENTO 4")
+  b2  <- bracket_64 |> filter(region == "FORT WORTH 3")
   
   sp1_w <- simulate_region(sp1, model_choice, matchup_data, 
                            models_list, return_all)
