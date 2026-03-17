@@ -20,14 +20,14 @@ get_round_probs <- function(sim_data, round_name) {
 }
 
 # 4. Calculate probabilities for every round
-r32_probs <- get_round_probs(simulation_results, "r64")       # Winning R64 means making R32
-s16_probs <- get_round_probs(simulation_results, "r32")       # Winning R32 means making Sweet 16
-e8_probs  <- get_round_probs(simulation_results, "s16")
+r32_probs <- get_round_probs(simulation_results, "r64") # Winning R64 means making R32
+s16_probs <- get_round_probs(simulation_results, "r32") # Winning R32 means making Sweet 16
+e8_probs  <- get_round_probs(simulation_results, "s16") # Winning Sweet 16 means making Elite 8
 f4_probs  <- get_round_probs(simulation_results, "e8")
 champ_probs <- get_round_probs(simulation_results, "champion")
 
 # 5. Join them all together into one Master Analytics Table
-# We use full_join because some 16-seeds might literally never make the Sweet 16 in 15k runs
+# use full_join because teams may never make later rounds
 bracket_analytics <- r32_probs |>
   full_join(s16_probs, by = "team") |>
   full_join(e8_probs, by = "team") |>
@@ -40,4 +40,4 @@ bracket_analytics <- r32_probs |>
 
 # 6. View the results and save them for your bracket pool!
 View(bracket_analytics)
-write_csv(bracket_analytics, "simulation/men/2026_bracket_optimal_picks.csv")
+write_csv(bracket_analytics, "analysis/men/2026_bracket_optimal_picks.csv")
