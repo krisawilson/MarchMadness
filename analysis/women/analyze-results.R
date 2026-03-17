@@ -1,7 +1,7 @@
 library(tidyverse)
 
 # 1. Load the results from your simulation loop
-load("analysis/men/results.RData")
+load("analysis/women/results.RData")
 
 # 2. Set the number of simulations (should match your loop)
 N <- length(simulation_results)

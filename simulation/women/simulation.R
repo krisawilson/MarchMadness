@@ -66,4 +66,4 @@ for(i in 1:N) {
 end <- proc.time()
 print(end - start)
 
-save(simulation_results, file = "simulation/women/results.RData")
+save(simulation_results, file = "analysis/women/results.RData")
