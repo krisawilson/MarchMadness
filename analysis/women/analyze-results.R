@@ -40,4 +40,4 @@ bracket_analytics <- r32_probs |>
 
 # 6. View the results and save them for your bracket pool!
 View(bracket_analytics)
-write_csv(bracket_analytics, "analysis/men/2026_bracket_optimal_picks.csv")
+write_csv(bracket_analytics, "analysis/women/2026_bracket_optimal_picks.csv")
